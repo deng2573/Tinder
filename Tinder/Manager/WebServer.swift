@@ -40,6 +40,7 @@ class WebServer: NSObject {
   }()
   
   func start() {
+    addMatchingHandler()
     addUploadHandler()
     uploader.start()
     print(uploader.port)
@@ -48,6 +49,19 @@ class WebServer: NSObject {
 }
 
 extension WebServer {
+  func addMatchingHandler() {
+    uploader.addHandler(forMethod: "GET", path: "/Matching", request: GCDWebServerMultiPartFormRequest.self) { (request, completionBlock) in
+      
+      let contentType = "application/json"
+//      _ = (request as! GCDWebServerMultiPartFormRequest).firstFile(forControlName: "file")
+//      _ = (request as! GCDWebServerMultiPartFormRequest).firstArgument(forControlName: "")?.string
+      
+      
+      let response = GCDWebServerDataResponse.init(jsonObject: ["status": "1"], contentType: contentType)
+      completionBlock(response)
+    }
+  }
+  
   func addUploadHandler() {
     uploader.addHandler(forMethod: "POST", path: "/uploadFiles", request: GCDWebServerMultiPartFormRequest.self) { (request, completionBlock) in
       

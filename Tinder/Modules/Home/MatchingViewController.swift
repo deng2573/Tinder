@@ -39,6 +39,16 @@ class MatchingViewController: ViewController {
   private func searchDevice() {
     WebManager.shared.startScan { devices in
       self.devices = devices
+      
+      for device in devices {
+
+        if !device.isLocalDevice {
+          WebClient.requestJson(method: .get, url: "http://\(String(describing: device.ipAddress)):80/Matching", parameters: nil, loading: false, callback: { json, error, statu in
+//            print(<#T##items: Any...##Any#>)
+          })
+        }
+      }
+      
       self.tableView.reloadData()
     }
   }
@@ -54,7 +64,7 @@ extension MatchingViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let file = devices[indexPath.row]
+//    let device = devices[indexPath.row]
     let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileInformationCell.self)
     cell.backgroundColor = UIColor.randomColor
     return cell
@@ -68,9 +78,12 @@ extension MatchingViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let file = devices[indexPath.row]
-    
-    
+    let device = devices[indexPath.row]
+    let a = PingOperation.init(ipToPing: device.ipAddress) { (error, string) in
+      print(error)
+      print(string)
+    }
+    a?.start()
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
