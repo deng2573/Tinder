@@ -38,18 +38,17 @@ class MatchingViewController: ViewController {
   
   private func searchDevice() {
     WebManager.shared.startScan { devices in
-      self.devices = devices
-      
       for device in devices {
-
         if !device.isLocalDevice {
-          WebClient.requestJson(method: .get, url: "http://\(String(describing: device.ipAddress)):80/Matching", parameters: nil, loading: false, callback: { json, error, statu in
-//            print(<#T##items: Any...##Any#>)
+          let url = "http://" + device.ipAddress + ":80/Matching"
+          WebClient.requestJson(method: .get, url: url, parameters: nil, loading: false, callback: { json, error, status in
+            if status == 200 {
+              self.devices.append(device)
+              self.tableView.reloadData()
+            }
           })
         }
       }
-      
-      self.tableView.reloadData()
     }
   }
 }

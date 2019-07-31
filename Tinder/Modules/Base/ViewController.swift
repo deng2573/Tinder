@@ -13,7 +13,7 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .mainSoftwareBackgroundColor
+    view.backgroundColor = UIColor.themeBackgroundColor
     hideNavigationBarShadowLine()
   }
   

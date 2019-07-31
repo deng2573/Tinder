@@ -10,6 +10,13 @@
 		1AA3EE9181489CE8E093BF3E /* Pods_Tinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C674C55A9E385F3AA9B1527 /* Pods_Tinder.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		B411686922F03B4A002008BE /* WebManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411686822F03B4A002008BE /* WebManager.swift */; };
 		B411686B22F04F13002008BE /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411686A22F04F13002008BE /* MatchingViewController.swift */; };
+		B411686E22F12DFC002008BE /* WebResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411686D22F12DFC002008BE /* WebResult.swift */; };
+		B411687022F1653A002008BE /* FilePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411686F22F1653A002008BE /* FilePickerViewController.swift */; };
+		B411687222F16974002008BE /* FileSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687122F16974002008BE /* FileSearchController.swift */; };
+		B411687422F18DB2002008BE /* UISearchBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687322F18DB2002008BE /* UISearchBar+Extensions.swift */; };
+		B411687622F18F66002008BE /* FileTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687522F18F66002008BE /* FileTypesView.swift */; };
+		B411687822F192D4002008BE /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687722F192D4002008BE /* FileInfo.swift */; };
+		B411687A22F196C9002008BE /* FileTypesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687922F196C9002008BE /* FileTypesCell.swift */; };
 		B45A4CDC22EEC6A400BBC94D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */; };
 		B45A4CE122EEC6A400BBC94D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CDF22EEC6A400BBC94D /* Main.storyboard */; };
 		B45A4CE322EEC6A600BBC94D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CE222EEC6A600BBC94D /* Assets.xcassets */; };
@@ -46,6 +53,13 @@
 		561375E8C54B84640CB56B95 /* Pods-Tinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinder.release.xcconfig"; path = "Target Support Files/Pods-Tinder/Pods-Tinder.release.xcconfig"; sourceTree = "<group>"; };
 		B411686822F03B4A002008BE /* WebManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebManager.swift; sourceTree = "<group>"; };
 		B411686A22F04F13002008BE /* MatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingViewController.swift; sourceTree = "<group>"; };
+		B411686D22F12DFC002008BE /* WebResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebResult.swift; sourceTree = "<group>"; };
+		B411686F22F1653A002008BE /* FilePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePickerViewController.swift; sourceTree = "<group>"; };
+		B411687122F16974002008BE /* FileSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSearchController.swift; sourceTree = "<group>"; };
+		B411687322F18DB2002008BE /* UISearchBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extensions.swift"; sourceTree = "<group>"; };
+		B411687522F18F66002008BE /* FileTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypesView.swift; sourceTree = "<group>"; };
+		B411687722F192D4002008BE /* FileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfo.swift; sourceTree = "<group>"; };
+		B411687922F196C9002008BE /* FileTypesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypesCell.swift; sourceTree = "<group>"; };
 		B45A4CD822EEC6A400BBC94D /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B45A4CE022EEC6A400BBC94D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,6 +112,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B411686C22F12D0E002008BE /* Infos */ = {
+			isa = PBXGroup;
+			children = (
+				B411686D22F12DFC002008BE /* WebResult.swift */,
+				B411687722F192D4002008BE /* FileInfo.swift */,
+			);
+			path = Infos;
+			sourceTree = "<group>";
+		};
 		B45A4CCF22EEC6A400BBC94D = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */,
+				B411686C22F12D0E002008BE /* Infos */,
 				B45A4CF022EED08000BBC94D /* Configs */,
 				B45A4CED22EED06E00BBC94D /* Utilites */,
 				B45A4D0822EED1CB00BBC94D /* Extensions */,
@@ -185,6 +209,7 @@
 				B45A4D1022EED1CB00BBC94D /* Dictionary+Extensions.swift */,
 				B45A4D1122EED1CB00BBC94D /* TimeInterval+Extensions.swift */,
 				B45A4D1222EED1CB00BBC94D /* Color+Extensions.swift */,
+				B411687322F18DB2002008BE /* UISearchBar+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -195,7 +220,11 @@
 				B45A4D1E22EED88F00BBC94D /* HomeViewController.swift */,
 				B45A4D2422EEEAEE00BBC94D /* TransferViewController.swift */,
 				B411686A22F04F13002008BE /* MatchingViewController.swift */,
+				B411686F22F1653A002008BE /* FilePickerViewController.swift */,
+				B411687122F16974002008BE /* FileSearchController.swift */,
 				B45A4D2622EEED6C00BBC94D /* FileInformationCell.swift */,
+				B411687922F196C9002008BE /* FileTypesCell.swift */,
+				B411687522F18F66002008BE /* FileTypesView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -337,18 +366,24 @@
 				B45A4D1422EED1CB00BBC94D /* UIImageView+Extensions.swift in Sources */,
 				B45A4CFA22EED08000BBC94D /* NetURL.swift in Sources */,
 				B45A4D0722EED19900BBC94D /* TabBarController.swift in Sources */,
+				B411687822F192D4002008BE /* FileInfo.swift in Sources */,
 				B45A4D0622EED19900BBC94D /* NavigationController.swift in Sources */,
 				B45A4D1C22EED1CB00BBC94D /* Color+Extensions.swift in Sources */,
 				B45A4CFF22EED08000BBC94D /* HUD.swift in Sources */,
 				B45A4CF922EED08000BBC94D /* Common.swift in Sources */,
 				B45A4D2722EEED6C00BBC94D /* FileInformationCell.swift in Sources */,
+				B411687022F1653A002008BE /* FilePickerViewController.swift in Sources */,
 				B45A4D2522EEEAEE00BBC94D /* TransferViewController.swift in Sources */,
+				B411687422F18DB2002008BE /* UISearchBar+Extensions.swift in Sources */,
 				B45A4D1F22EED88F00BBC94D /* HomeViewController.swift in Sources */,
+				B411687A22F196C9002008BE /* FileTypesCell.swift in Sources */,
 				B45A4D1B22EED1CB00BBC94D /* TimeInterval+Extensions.swift in Sources */,
 				B45A4D0522EED19900BBC94D /* ViewController.swift in Sources */,
 				B45A4CFC22EED08000BBC94D /* AppConfig.swift in Sources */,
 				B45A4CFE22EED08000BBC94D /* WebClient.swift in Sources */,
 				B411686922F03B4A002008BE /* WebManager.swift in Sources */,
+				B411686E22F12DFC002008BE /* WebResult.swift in Sources */,
+				B411687222F16974002008BE /* FileSearchController.swift in Sources */,
 				B45A4D1622EED1CB00BBC94D /* UIButton+Extensions.swift in Sources */,
 				B45A4D1722EED1CB00BBC94D /* UIView+Extensions.swift in Sources */,
 				B411686B22F04F13002008BE /* MatchingViewController.swift in Sources */,
@@ -360,6 +395,7 @@
 				B45A4D1A22EED1CB00BBC94D /* Dictionary+Extensions.swift in Sources */,
 				B45A4D1322EED1CB00BBC94D /* Int+Extensions.swift in Sources */,
 				B45A4CFB22EED08000BBC94D /* Color.swift in Sources */,
+				B411687622F18F66002008BE /* FileTypesView.swift in Sources */,
 				B45A4CFD22EED08000BBC94D /* Refresh.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

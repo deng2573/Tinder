@@ -19,7 +19,7 @@ class FileInformationCell: UITableViewCell {
     return imageView
   }()
 
-  private lazy var nameLable: UILabel = {
+  private lazy var nameLabel: UILabel = {
     let label = UILabel()
     label.text = ""
     label.textColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
@@ -54,21 +54,21 @@ class FileInformationCell: UITableViewCell {
       make.size.equalTo(CGSize(width: 100, height: 40))
     })
     
-    contentView.addSubview(nameLable)
-    nameLable.snp.makeConstraints({ (make) in
+    contentView.addSubview(nameLabel)
+    nameLabel.snp.makeConstraints({ (make) in
       make.left.equalTo(coverImageView.snp.right).offset(8)
       make.bottom.equalTo(coverImageView.snp.centerY).offset(-5)
     })
     
     contentView.addSubview(sizeLable)
     sizeLable.snp.makeConstraints({ (make) in
-      make.left.equalTo(nameLable)
+      make.left.equalTo(nameLabel)
       make.top.equalTo(coverImageView.snp.centerY).offset(5)
     })
   }
   
   func update(file: Path) {
-    nameLable.text = file.fileName
+    nameLabel.text = file.fileName
     sizeLable.text = "\(file.fileSize ?? 0 / 1024 / 1024)"
   }
 }

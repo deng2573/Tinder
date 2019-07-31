@@ -20,7 +20,8 @@ class HomeViewController: ViewController {
     button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
     button.tap(action: { _ in
 //      self.presentPickerController()
-      self.navigationController?.pushViewController(MatchingViewController(), animated: true)
+//      self.navigationController?.pushViewController(MatchingViewController(), animated: true)
+      self.navigationController?.pushViewController(FilePickerViewController(), animated: true)
     })
     
     return button

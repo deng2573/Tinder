@@ -31,7 +31,6 @@ class WebClient: NSObject {
   public static func requestJson(method: HTTPMethod = .post, url: String, parameters: [String: Any]? = nil, loading: Bool = false, callback: @escaping(JSON?, String, Int?) -> Void) {
     // 检测网路状态
     if !isReachable { callback(nil, netFailureMsg, nil); return }
-
     // Loading
     if loading { HUD.loading() }
     // 请求
@@ -46,11 +45,6 @@ class WebClient: NSObject {
       let status = json["status"].intValue
       let msg = json["msg"].stringValue
       let data = json["data"]
-      // 登录超时
-      if status == 406 {
-        callback(nil, msg, status)
-        return
-      }
       // 请求成功
       if status == 200 {
         callback(data, msg, status)

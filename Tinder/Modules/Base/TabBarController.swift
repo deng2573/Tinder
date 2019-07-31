@@ -54,7 +54,7 @@ class TabBarController: UITabBarController {
     }
     
     setViewControllers(viewControllers, animated: false)
-    tabBar.backgroundImage = UIImage.homeTabBarbackgroundImage
+    
     tabBar.clipsToBounds = true
   }
  
@@ -62,6 +62,6 @@ class TabBarController: UITabBarController {
 
 extension TabBarController: UITabBarControllerDelegate {
   override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-    tabBar.backgroundImage = item.tag == 0 ?  UIImage.homeTabBarbackgroundImage : UIImage.normalTabBarbackgroundImage
+    
   }
 }

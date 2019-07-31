@@ -17,8 +17,8 @@ class NavigationController: UINavigationController {
   
   func setupView() {
     navigationBar.isTranslucent = false
-    navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.mainSoftwareHighlightTextColor, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .regular)]
-    navigationBar.barTintColor = #colorLiteral(red: 0.1725490196, green: 0.1764705882, blue: 0.1960784314, alpha: 1)
+    navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleColor, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .regular)]
+    navigationBar.barTintColor = UIColor.themeColor
   }
   
   override func pushViewController(_ viewController: UIViewController, animated: Bool) {

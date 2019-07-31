@@ -51,13 +51,9 @@ class WebServer: NSObject {
 extension WebServer {
   func addMatchingHandler() {
     uploader.addHandler(forMethod: "GET", path: "/Matching", request: GCDWebServerMultiPartFormRequest.self) { (request, completionBlock) in
-      
       let contentType = "application/json"
-//      _ = (request as! GCDWebServerMultiPartFormRequest).firstFile(forControlName: "file")
-//      _ = (request as! GCDWebServerMultiPartFormRequest).firstArgument(forControlName: "")?.string
-      
-      
-      let response = GCDWebServerDataResponse.init(jsonObject: ["status": "1"], contentType: contentType)
+      let result = WebResult(status: 200, msg: "设备匹配成功")
+      let response = GCDWebServerDataResponse.init(jsonObject: result.toDictionary(), contentType: contentType)
       completionBlock(response)
     }
   }
