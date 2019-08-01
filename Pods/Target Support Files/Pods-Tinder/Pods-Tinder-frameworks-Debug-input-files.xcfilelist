@@ -19,3 +19,4 @@ ${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLay
 ${BUILT_PRODUCTS_DIR}/YBImageBrowser/YBImageBrowser.framework
 ${BUILT_PRODUCTS_DIR}/YYImage/YYImage.framework
 ${BUILT_PRODUCTS_DIR}/ZFPlayer/ZFPlayer.framework
+${BUILT_PRODUCTS_DIR}/iCloudDocumentSync/iCloudDocumentSync.framework

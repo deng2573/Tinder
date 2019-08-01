@@ -11,12 +11,13 @@ import UIKit
 class FilePickerViewController: UIViewController {
   
   private lazy var tableView: UITableView = {
-    let tableView = UITableView(frame: .zero, style: .plain)
+    let tableView = UITableView(frame: .zero, style: .grouped)
     tableView.backgroundColor = .white
     tableView.separatorStyle = .none
     tableView.dataSource = self
     tableView.delegate = self
     tableView.register(cellType: FileTypesCell.self)
+    tableView.register(cellType: FileInfoCell.self)
     return tableView
   }()
   
@@ -61,15 +62,23 @@ class FilePickerViewController: UIViewController {
 
 extension FilePickerViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+    return 2
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    if section == 0 {
+     return 1
+    }
+    return 10
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileTypesCell.self)
+    if indexPath.section == 0 {
+      let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileTypesCell.self)
+      return cell
+    }
+    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileInfoCell.self)
+    cell.backgroundColor = UIColor.randomColor
     return cell
   }
 }
@@ -77,28 +86,31 @@ extension FilePickerViewController: UITableViewDataSource {
 extension FilePickerViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return FileTypeItemWidth + 25
+    if indexPath.section == 0 {
+     return FileTypeItemWidth + 25
+    }
+    return 100
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
   }
   
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return searchController.searchBar
-  }
-
-  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    return UIView()
-  }
-
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 50
-  }
-
-  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 0.1
-  }
+//  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//    return searchController.searchBar
+//  }
+//
+//  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//    return UIView()
+//  }
+//
+//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//    return 50
+//  }
+//
+//  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//    return 0.1
+//  }
   
 }
 

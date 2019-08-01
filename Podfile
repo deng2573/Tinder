@@ -40,4 +40,6 @@ target 'Tinder' do
   pod 'FileKit'
   # 局域网IP扫描
   pod 'MMLanScan'
+  # iCloud
+  pod 'iCloudDocumentSync'
 end

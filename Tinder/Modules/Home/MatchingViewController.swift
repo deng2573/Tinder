@@ -17,7 +17,7 @@ class MatchingViewController: ViewController {
     tableView.separatorStyle = .none
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.register(cellType: FileInformationCell.self)
+    tableView.register(cellType: FileInfoCell.self)
     return tableView
   }()
   
@@ -64,7 +64,7 @@ extension MatchingViewController: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //    let device = devices[indexPath.row]
-    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileInformationCell.self)
+    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileInfoCell.self)
     cell.backgroundColor = UIColor.randomColor
     return cell
   }

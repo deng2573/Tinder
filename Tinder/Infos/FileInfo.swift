@@ -8,20 +8,19 @@
 
 import UIKit
 
-class FileType: NSObject {
-  var type: String
-  var icon: UIImage
-
-  required override init() {
-    fatalError("init() has not been implemented")
-  }
-  
-  init(type: String, icon: UIImage) {
-    self.type = type
-    self.icon = icon
-  }
-  
-}
+//class FilePickerInfo: NSObject {
+//  var type: FilePickerType
+//
+//  required override init() {
+//    fatalError("init() has not been implemented")
+//  }
+//  
+//  init(type: FilePickerType, icon: UIImage) {
+//    self.type = FilePickerType
+//    self.icon = icon
+//  }
+//  
+//}
 
 extension String {
 //  ["图片", "视频", "云盘", "本地"]

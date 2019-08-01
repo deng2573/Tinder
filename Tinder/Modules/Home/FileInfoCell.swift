@@ -9,7 +9,7 @@
 import UIKit
 import FileKit
 
-class FileInformationCell: UITableViewCell {
+class FileInfoCell: UITableViewCell {
 
   private lazy var coverImageView: UIImageView = {
     let imageView = UIImageView()

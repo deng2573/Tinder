@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TZImagePickerController
 
 let FileTypeItemWidth = (screenWidth - 32 - 3 * 20) / 4
 
@@ -27,7 +28,7 @@ class FileTypesView: UIView {
     return collectionView
   }()
   
-  private var itemList: [FileType] = []
+  private var itemList: [FilePickerType] = [.image, .video, .cloud, .local]
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -36,7 +37,6 @@ class FileTypesView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     setUpView()
-    setUpItemList()
   }
 
   private func setUpView() {
@@ -46,20 +46,12 @@ class FileTypesView: UIView {
     }
     collectionView.register(cellType: FileTypeCell.self)
   }
-  
-  func setUpItemList() {
-    let items = ["图片", "视频", "云盘", "本地"]
-    for item in items {
-      let fileType = FileType(type: item, icon: item.fileIcon)
-      itemList.append(fileType)
-      collectionView.reloadData()
-    }
-  }
 }
 
 extension FileTypesView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+    let type = itemList[indexPath.row]
+    FileServer.shared.filePicker(type: type)
   }
 }
 
@@ -72,7 +64,7 @@ extension FileTypesView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let type = itemList[indexPath.row]
     let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: FileTypeCell.self)
-    cell.update(info: type)
+    cell.update(type: type)
     return cell
   }
 }
@@ -120,9 +112,8 @@ class FileTypeCell: UICollectionViewCell {
     })
   }
   
-  func update(info: FileType) {
-//    fileIcon.image = info.icon
-    nameLabel.text = info.type
+  func update(type: FilePickerType) {
+    nameLabel.text = type.name
     fileIcon.backgroundColor = UIColor.randomColor
   }
 }

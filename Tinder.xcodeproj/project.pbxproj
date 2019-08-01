@@ -44,7 +44,9 @@
 		B45A4D1F22EED88F00BBC94D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4D1E22EED88F00BBC94D /* HomeViewController.swift */; };
 		B45A4D2322EEDC6A00BBC94D /* WebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4D2222EEDC6A00BBC94D /* WebServer.swift */; };
 		B45A4D2522EEEAEE00BBC94D /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4D2422EEEAEE00BBC94D /* TransferViewController.swift */; };
-		B45A4D2722EEED6C00BBC94D /* FileInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4D2622EEED6C00BBC94D /* FileInformationCell.swift */; };
+		B45A4D2722EEED6C00BBC94D /* FileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */; };
+		B4F5449222F2EAC600E07016 /* FileServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5449122F2EAC600E07016 /* FileServer.swift */; };
+		B4F5449422F2F04700E07016 /* VCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5449322F2F04700E07016 /* VCManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +91,9 @@
 		B45A4D1E22EED88F00BBC94D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B45A4D2222EEDC6A00BBC94D /* WebServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServer.swift; sourceTree = "<group>"; };
 		B45A4D2422EEEAEE00BBC94D /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
-		B45A4D2622EEED6C00BBC94D /* FileInformationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInformationCell.swift; sourceTree = "<group>"; };
+		B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoCell.swift; sourceTree = "<group>"; };
+		B4F5449122F2EAC600E07016 /* FileServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServer.swift; sourceTree = "<group>"; };
+		B4F5449322F2F04700E07016 /* VCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +226,7 @@
 				B411686A22F04F13002008BE /* MatchingViewController.swift */,
 				B411686F22F1653A002008BE /* FilePickerViewController.swift */,
 				B411687122F16974002008BE /* FileSearchController.swift */,
-				B45A4D2622EEED6C00BBC94D /* FileInformationCell.swift */,
+				B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */,
 				B411687922F196C9002008BE /* FileTypesCell.swift */,
 				B411687522F18F66002008BE /* FileTypesView.swift */,
 			);
@@ -235,6 +239,8 @@
 				B45A4D2222EEDC6A00BBC94D /* WebServer.swift */,
 				B45A4CF622EED08000BBC94D /* WebClient.swift */,
 				B411686822F03B4A002008BE /* WebManager.swift */,
+				B4F5449122F2EAC600E07016 /* FileServer.swift */,
+				B4F5449322F2F04700E07016 /* VCManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -369,10 +375,12 @@
 				B411687822F192D4002008BE /* FileInfo.swift in Sources */,
 				B45A4D0622EED19900BBC94D /* NavigationController.swift in Sources */,
 				B45A4D1C22EED1CB00BBC94D /* Color+Extensions.swift in Sources */,
+				B4F5449422F2F04700E07016 /* VCManager.swift in Sources */,
 				B45A4CFF22EED08000BBC94D /* HUD.swift in Sources */,
 				B45A4CF922EED08000BBC94D /* Common.swift in Sources */,
-				B45A4D2722EEED6C00BBC94D /* FileInformationCell.swift in Sources */,
+				B45A4D2722EEED6C00BBC94D /* FileInfoCell.swift in Sources */,
 				B411687022F1653A002008BE /* FilePickerViewController.swift in Sources */,
+				B4F5449222F2EAC600E07016 /* FileServer.swift in Sources */,
 				B45A4D2522EEEAEE00BBC94D /* TransferViewController.swift in Sources */,
 				B411687422F18DB2002008BE /* UISearchBar+Extensions.swift in Sources */,
 				B45A4D1F22EED88F00BBC94D /* HomeViewController.swift in Sources */,
