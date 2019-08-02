@@ -18,6 +18,8 @@
 		B411687822F192D4002008BE /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687722F192D4002008BE /* FileInfo.swift */; };
 		B411687A22F196C9002008BE /* FileTypesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687922F196C9002008BE /* FileTypesCell.swift */; };
 		B427F81E22F3D0A7006FEAD9 /* LocalFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427F81D22F3D0A7006FEAD9 /* LocalFileViewController.swift */; };
+		B450D60C22F4716C00A82BF6 /* TinderWebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B450D60B22F4716C00A82BF6 /* TinderWebServer.swift */; };
+		B450D61222F4763800A82BF6 /* TinderServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B450D61122F4763800A82BF6 /* TinderServer.m */; };
 		B45A4CDC22EEC6A400BBC94D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */; };
 		B45A4CE122EEC6A400BBC94D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CDF22EEC6A400BBC94D /* Main.storyboard */; };
 		B45A4CE322EEC6A600BBC94D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CE222EEC6A600BBC94D /* Assets.xcassets */; };
@@ -65,6 +67,10 @@
 		B411687922F196C9002008BE /* FileTypesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypesCell.swift; sourceTree = "<group>"; };
 		B427F81D22F3D0A7006FEAD9 /* LocalFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileViewController.swift; sourceTree = "<group>"; };
 		B427F81F22F402C3006FEAD9 /* Tinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tinder.entitlements; sourceTree = "<group>"; };
+		B450D60B22F4716C00A82BF6 /* TinderWebServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderWebServer.swift; sourceTree = "<group>"; };
+		B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tinder-Bridging-Header.h"; sourceTree = "<group>"; };
+		B450D61022F4763800A82BF6 /* TinderServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinderServer.h; sourceTree = "<group>"; };
+		B450D61122F4763800A82BF6 /* TinderServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TinderServer.m; sourceTree = "<group>"; };
 		B45A4CD822EEC6A400BBC94D /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B45A4CE022EEC6A400BBC94D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -242,10 +248,14 @@
 			isa = PBXGroup;
 			children = (
 				B45A4D2222EEDC6A00BBC94D /* WebServer.swift */,
+				B450D60B22F4716C00A82BF6 /* TinderWebServer.swift */,
+				B450D61022F4763800A82BF6 /* TinderServer.h */,
+				B450D61122F4763800A82BF6 /* TinderServer.m */,
 				B45A4CF622EED08000BBC94D /* WebClient.swift */,
 				B411686822F03B4A002008BE /* WebManager.swift */,
 				B4F5449122F2EAC600E07016 /* FileServer.swift */,
 				B4F5449322F2F04700E07016 /* VCManager.swift */,
+				B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -293,6 +303,7 @@
 				TargetAttributes = {
 					B45A4CD722EEC6A400BBC94D = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -398,11 +409,13 @@
 				B45A4D1B22EED1CB00BBC94D /* TimeInterval+Extensions.swift in Sources */,
 				B45A4D0522EED19900BBC94D /* ViewController.swift in Sources */,
 				B45A4CFC22EED08000BBC94D /* AppConfig.swift in Sources */,
+				B450D60C22F4716C00A82BF6 /* TinderWebServer.swift in Sources */,
 				B45A4CFE22EED08000BBC94D /* WebClient.swift in Sources */,
 				B411686922F03B4A002008BE /* WebManager.swift in Sources */,
 				B411686E22F12DFC002008BE /* WebResult.swift in Sources */,
 				B411687222F16974002008BE /* FileSearchController.swift in Sources */,
 				B45A4D1622EED1CB00BBC94D /* UIButton+Extensions.swift in Sources */,
+				B450D61222F4763800A82BF6 /* TinderServer.m in Sources */,
 				B45A4D1722EED1CB00BBC94D /* UIView+Extensions.swift in Sources */,
 				B411686B22F04F13002008BE /* MatchingViewController.swift in Sources */,
 				B45A4D1822EED1CB00BBC94D /* String+Extensions.swift in Sources */,
@@ -562,6 +575,7 @@
 			baseConfigurationReference = 13B03715384816F8418A8AAA /* Pods-Tinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Tinder/Tinder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HM6LBBLTGF;
@@ -572,6 +586,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Deng.Tinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tinder/Manager/Tinder-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -582,6 +598,7 @@
 			baseConfigurationReference = 561375E8C54B84640CB56B95 /* Pods-Tinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Tinder/Tinder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HM6LBBLTGF;
@@ -592,6 +609,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Deng.Tinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tinder/Manager/Tinder-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

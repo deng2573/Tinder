@@ -15,8 +15,8 @@ let WebUploadPathName = "WebUpload"
 class WebServer: NSObject {
   static let shared = WebServer()
   
-  private lazy var uploader: GCDWebUploader = {
-    let uploader = GCDWebUploader(uploadDirectory: uploadPath)
+  private lazy var uploader: TinderServer = {
+    let uploader = TinderServer(uploadDirectory: uploadPath)
     uploader.delegate = self
     uploader.allowHiddenItems = true
 //    uploader.addGETHandler(forBasePath: "/", directoryPath: uploadPath, indexFilename: nil, cacheAge: 3600, allowRangeRequests: false)
@@ -44,7 +44,13 @@ class WebServer: NSObject {
     addMatchingHandler()
     addUploadHandler()
     addDownloadHandler()
-    uploader.start()
+		uploader.start()
+//		do {
+//			try uploader.start(options: [GCDWebServerOption_ConnectionClass: "TinderConnection"])
+//		} catch {
+//
+//		}
+		
     print(uploader.port)
   }
 
@@ -107,7 +113,7 @@ extension WebServer {
   }
 }
 
-extension WebServer: GCDWebUploaderDelegate {
+extension WebServer: TinderServerDelegate {
   func webUploader(_: GCDWebUploader, didUploadFileAtPath path: String) {
     print("[UPLOAD] \(path)")
   }
@@ -127,4 +133,9 @@ extension WebServer: GCDWebUploaderDelegate {
   func webUploader(_: GCDWebUploader, didDeleteItemAtPath path: String) {
     print("[DELETE] \(path)")
   }
+	
+	func connection(_ connection: TinderConnection, receivedBytes count: UInt) {
+		print(connection.uuid)
+		print(count)
+	}
 }
