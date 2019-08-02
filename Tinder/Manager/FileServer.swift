@@ -10,6 +10,7 @@ import UIKit
 import Photos
 import TZImagePickerController
 import iCloudDocumentSync
+import FileKit
 
 enum FilePickerType {
   case image
@@ -47,13 +48,23 @@ enum FilePickerType {
 class FileServer: NSObject {
   static let shared = FileServer()
   
+  var didSelectedAction: (([FileInfo]) -> Void)?
+  
+  private var selectedAssets: [PHAsset] = []
+  
+  private var selectedDocuments: [URL] = []
+  
+  private var selectedLocalFiles: [URL] = []
+  
+  private var selectedFileInfos: [FileInfo] = []
+  
   func filePicker(type: FilePickerType) {
     let currentVC = VCManager.currentViewController
     
     switch type {
     case .image, .video:
-      let imagePickerViewController = TZImagePickerController(maxImagesCount: 9, columnNumber: 4, delegate: nil, pushPhotoPickerVc: true)
-      
+      let imagePickerViewController = TZImagePickerController(maxImagesCount: 1000000, columnNumber: 4, delegate: nil, pushPhotoPickerVc: true)
+      imagePickerViewController?.selectedAssets = NSMutableArray(array: selectedAssets)
       imagePickerViewController?.allowTakePicture = true
       imagePickerViewController?.sortAscendingByModificationDate = true
       let isImage = type == .image
@@ -65,12 +76,23 @@ class FileServer: NSObject {
       imagePickerViewController?.allowPickingVideo = !isImage
       imagePickerViewController?.showSelectBtn = true
       
-      imagePickerViewController?.didFinishPickingPhotosHandle = { (photos, assets, isSelect) in
-//        self.assetsToFiles(assets: NSMutableArray(array: assets!) as! [PHAsset], complete: { files in
-//          WebClient.upload(files: files, completion: { satu in
-//
-//          })
-//        })
+      imagePickerViewController?.didFinishPickingPhotosHandle = { (photos, assets, isSelectOriginalPhoto) in
+        var newAssets: [PHAsset] = []
+        let assets = assets as! [PHAsset]
+        for asset in assets {
+          if !self.selectedAssets.contains(asset) {
+            newAssets.append(asset)
+          }
+        }
+        self.selectedAssets = assets
+        self.assetToFile(assets: newAssets, complete: { files in
+          self.selectedFileInfos.append(contentsOf: files)
+          
+          DispatchQueue.main.async(execute: {
+            self.didSelectedAction?(self.selectedFileInfos)
+          })
+
+        })
       }
       
       currentVC.present(imagePickerViewController!, animated: true, completion: nil)
@@ -84,11 +106,13 @@ class FileServer: NSObject {
     }
     documentPickerVC.delegate = self
     currentVC.present(documentPickerVC, animated: true, completion: nil)
-    case .local: break
+    case .local:
+      let localFileVC = LocalFileViewController()
+      currentVC.present(NavigationController(rootViewController: localFileVC), animated: true, completion: nil)
     }
   }
   
-  static func assetToFile(assets: [PHAsset], complete: @escaping (_ files: [FileInfo]) -> ()) {
+  private func assetToFile(assets: [PHAsset], complete: @escaping (_ files: [FileInfo]) -> ()) {
     let manager = TZImageManager.default()
     var files: [FileInfo] = []
     for (index, asset) in assets.enumerated() {
@@ -97,24 +121,35 @@ class FileServer: NSObject {
       case TZAssetModelMediaTypePhoto, TZAssetModelMediaTypePhotoGif:
         PHImageManager.default().requestImageData(for: asset, options: nil) { data, file, orientation, info in
           if let data = data {
+            let url = info?["PHImageFileURLKey"] as! URL
+            let name = url.fileName
             if assetType == TZAssetModelMediaTypePhoto {
-              let file = FileInfo(type: "JPG", data: data)
+              let file = FileInfo(name: name, data: data, fileExtension: url.pathExtension)
               files.append(file)
             } else {
-              let file = FileInfo(type: "GIF", data: data)
+              let file = FileInfo(name: name, data: data, fileExtension: url.pathExtension)
               files.append(file)
             }
             if index == assets.count - 1 {
               complete(files)
             }
+//            do {
+//              let path = Path.userDocuments + Path(url: url)!.fileName
+//              try data.write(to: path, atomically: true)
+//            } catch(let error) {
+//              print(error)
+//            }
+
           }
         }
       case TZAssetModelMediaTypeVideo:
         PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { (asset, mix, info) in
           do {
             let avAsset = asset as? AVURLAsset
-            let data = try Data(contentsOf: avAsset!.url)
-            let file = FileInfo(type: avAsset!.url.pathExtension, data: data)
+            let url = avAsset!.url
+            let name = url.fileName
+            let data = try Data(contentsOf: url)
+            let file = FileInfo(name: name, data: data, fileExtension: url.pathExtension)
             files.append(file)
             if index == assets.count - 1 {
               complete(files)
@@ -130,18 +165,38 @@ class FileServer: NSObject {
 }
 
 extension FileServer: UIDocumentPickerDelegate {
-  
   func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-    var files: [FileInfo] = []
-    for url in urls {
-      do {
-        let pathExtension = url.pathExtension
-        let data = try Data(contentsOf: url)
-        let file = FileInfo(type: pathExtension, data: data)
-        files.append(file)
-      } catch {
-        
+    let shared = iCloud.shared()
+    shared?.setupiCloudDocumentSync(withUbiquityContainer: nil)
+    if shared?.checkAvailability() ?? false {
+      var files: [FileInfo] = []
+      for (index, url) in urls.enumerated() {
+        guard let document = iCloudDocument(fileURL: url) else { return }
+        NSFileCoordinator().coordinate(readingItemAt: url, options: [], error: nil) { url in
+          do {
+            let pathExtension = url.pathExtension
+            let name = document.localizedName()?.substring(before: ".\(pathExtension)") ?? "文件"
+            let data = try Data(contentsOf: url)
+            let file = FileInfo(name: name, data: data, fileExtension: pathExtension)
+            files.append(file)
+            if index == urls.count - 1 {
+              selectedFileInfos.append(contentsOf: files)
+              DispatchQueue.main.async(execute: {
+                self.didSelectedAction?(self.selectedFileInfos)
+              })
+            }
+          } catch(let error) {
+            print(error)
+          }
+        }
       }
     }
+  }
+}
+
+extension URL {
+  var fileName: String {
+    let path = Path(url: self)
+    return path?.fileName.substring(before: ".\(pathExtension)") ?? "文件"
   }
 }

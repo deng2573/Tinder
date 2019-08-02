@@ -43,6 +43,19 @@ class FilePickerViewController: UIViewController {
     return searchController
   }()
   
+  private lazy var shareButton: UIButton = {
+    let button = UIButton(type: .custom)
+    button.setTitle("分享", for: .normal)
+    button.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6196078431, blue: 1, alpha: 1)
+    button.layer.cornerRadius = 22
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+    button.tap(action: { _ in
+      self.navigationController?.pushViewController(TransferViewController(), animated: true)
+    })
+    
+    return button
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -56,6 +69,12 @@ class FilePickerViewController: UIViewController {
     tableView.snp.makeConstraints { (make) in
       make.edges.equalToSuperview()
     }
+    view.addSubview(shareButton)
+    shareButton.snp.makeConstraints({ (make) in
+      make.left.equalTo(40)
+      make.right.bottom.equalTo(-40)
+      make.height.equalTo(44)
+    })
   }
   
 }
@@ -75,6 +94,16 @@ extension FilePickerViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.section == 0 {
       let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileTypesCell.self)
+      cell.fileTypeView.didSelectedAction = { type in
+        let fileServer = FileServer.shared
+        fileServer.filePicker(type: type)
+        fileServer.didSelectedAction = { files in
+          self.shareButton.setTitle("分享  \(files.count)", for: .normal)
+          WebClient.upload(files: files, url: "http://192.168.1.161:8080/uploadFiles", completion: { sta in
+            
+          })
+        }
+      }
       return cell
     }
     let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileInfoCell.self)

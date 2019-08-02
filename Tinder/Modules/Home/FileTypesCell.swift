@@ -10,7 +10,7 @@ import UIKit
 
 class FileTypesCell: UITableViewCell {
   
-  private lazy var fileTypeView: FileTypesView = {
+  lazy var fileTypeView: FileTypesView = {
     let view = FileTypesView(frame: CGRect(x: 16, y: 0, width: screenWidth - 32, height: FileTypeItemWidth + 25))
     return view
   }()

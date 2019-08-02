@@ -79,13 +79,13 @@ class WebClient: NSObject {
       return callback(objects, msg, status == 401)
     }
   }
-  
-  public static func upload(files: [FileInfo], completion: @escaping (Int?) -> Void ) {
+
+  public static func upload(files: [FileInfo], url: String, completion: @escaping (Int?) -> Void ) {
     Alamofire.upload( multipartFormData: { multipartFormData in
-      for (index, file) in files.enumerated() {
-        multipartFormData.append(file.data, withName: "files[]", fileName: "file\(index).\(file.type)", mimeType: file.type.mimeType)
+      for file in files {
+        multipartFormData.append(file.data, withName: "files[]", fileName: "\(file.name).\(file.fileExtension)", mimeType: file.fileExtension.mimeType)
       }
-    }, to: "http://192.168.1.143:80/uploadFiles", headers: [:], encodingCompletion: { encodingResult in
+    }, to: url, headers: [:], encodingCompletion: { encodingResult in
       switch encodingResult {
       case .success(let upload, _, _):
         upload.responseJSON { response in
@@ -108,16 +108,44 @@ class WebClient: NSObject {
     })
   }
   
+  public static func download(url: String, completion: @escaping (Int?) -> Void ) {
+    let url = "http://192.168.1.143:80/download?path=/file.JPG"
+//    let parameters = ["path": "/file.JPG"]
+    Alamofire.download(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil) { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+      let manager = FileManager.default
+      let urlForDocument = manager.urls(for: .documentDirectory, in:.userDomainMask)
+      let url = urlForDocument[0] as URL
+      let folder = url.appendingPathComponent("WebDownload", isDirectory: true)
+      
+      return (URL(fileURLWithPath: folder.path + "/991.JPG"), [.createIntermediateDirectories, .removePreviousFile])
+      }.responseJSON { (response) in
+        
+        switch response.result {
+          
+        case .success:
+          print("success")
+        case .failure: break
+          //意外中断后在此处处理下载完成的部分
+//         let tmpData = response.resumeData
+//          Alamofire.download(resumingWith: tmpData!)
+        }
+        
+    }
+    
+  }
+  
 }
 
 
 class FileInfo: EVObject {
+  var name: String
   var data: Data
-  var type: String // 文件后缀
+  var fileExtension: String // 文件后缀
   
-  init(type: String, data: Data) {
-    self.type = type
+  init(name: String, data: Data, fileExtension: String) {
+    self.name = name
     self.data = data
+    self.fileExtension = fileExtension
   }
   
   required init() {

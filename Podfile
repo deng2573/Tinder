@@ -42,4 +42,6 @@ target 'Tinder' do
   pod 'MMLanScan'
   # iCloud
   pod 'iCloudDocumentSync'
+  # 下载
+  pod 'Tiercel'
 end

@@ -9,6 +9,7 @@
 import UIKit
 import TZImagePickerController
 import MMLanScan
+import Tiercel
 
 class HomeViewController: ViewController {
 
@@ -35,6 +36,38 @@ class HomeViewController: ViewController {
     button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
     button.tap(action: { _ in
       self.navigationController?.pushViewController(TransferViewController(), animated: true)
+      
+//     let manager =  SessionManager("ViewController1222", configuration: SessionConfiguration())
+//      
+//     
+//      
+//      manager.download("http://192.168.1.143:80/downloadFiles?path=file:///var/mobile/Media/DCIM/103APPLE/IMG_3996.JPG")?.progress { [weak self] (task) in
+//        let per = task.progress.fractionCompleted
+//        print("progress： \(String(format: "%.2f", per * 100))%")
+//        }.success { [weak self] (task) in
+//          
+//          // 下载任务成功了
+//          print("下载成功")
+//        }.failure { [weak self] (task) in
+//         
+//          print("下载failure")
+//          if task.status == .suspended {
+//            // 下载任务暂停了
+//          }
+//          if task.status == .failed {
+//            // 下载任务失败了
+//          }
+//          if task.status == .canceled {
+//            // 下载任务取消了
+//          }
+//          if task.status == .removed {
+//            // 下载任务移除了
+//          }
+//      }
+      
+//      WebClient.download(url: "", completion: { sut in
+//
+//      })
     })
     
     return button
@@ -56,72 +89,5 @@ class HomeViewController: ViewController {
       make.top.equalTo(100)
       make.height.equalTo(44)
     })
-  }
-  
-  private func presentPickerController() {
-    let imagePickerViewController = TZImagePickerController(maxImagesCount: 9, columnNumber: 4, delegate: nil, pushPhotoPickerVc: true)
-
-    imagePickerViewController?.allowTakePicture = true
-    imagePickerViewController?.sortAscendingByModificationDate = true
-    
-    imagePickerViewController?.allowPickingGif = true
-    imagePickerViewController?.allowPickingVideo = true
-    imagePickerViewController?.allowPickingImage = true
-    imagePickerViewController?.allowPickingOriginalPhoto = true
-    imagePickerViewController?.allowPickingMultipleVideo = true
-    imagePickerViewController?.showSelectBtn = false
-    
-    imagePickerViewController?.didFinishPickingPhotosHandle = { (photos, assets, isSelect) in
-      
-      
-      self.assetsToFiles(assets: NSMutableArray(array: assets!) as! [PHAsset], complete: { files in
-        WebClient.upload(files: files, completion: { satu in
-          
-        })
-      })
-    }
-    
-    present(imagePickerViewController!, animated: true, completion: nil)
-  }
-  
-  private func assetsToFiles(assets: [PHAsset], complete: @escaping (_ files: [FileInfo]) -> ()) {
-    WebServer.shared.addUploadHandler()
-    let manager = TZImageManager.default()
-    var files: [FileInfo] = []
-    for (index, asset) in assets.enumerated() {
-      let assetType = manager?.getAssetType(asset)
-      switch assetType {
-      case TZAssetModelMediaTypePhoto, TZAssetModelMediaTypePhotoGif:
-        PHImageManager.default().requestImageData(for: asset, options: nil) { data, file, orientation, info in
-          if let data = data {
-            if assetType == TZAssetModelMediaTypePhoto {
-              let file = FileInfo(type: "JPG", data: data)
-              files.append(file)
-            } else {
-              let file = FileInfo(type: "GIF", data: data)
-              files.append(file)
-            }
-            if index == assets.count - 1 {
-              complete(files)
-            }
-          }
-        }
-      case TZAssetModelMediaTypeVideo:
-        PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { (asset, mix, info) in
-          do {
-            let avAsset = asset as? AVURLAsset
-            let data = try Data(contentsOf: avAsset!.url)
-            let file = FileInfo(type: avAsset!.url.pathExtension, data: data)
-            files.append(file)
-            if index == assets.count - 1 {
-              complete(files)
-            }
-          } catch  {
-          }
-        }
-      default:
-        break
-      }
-    }
   }
 }

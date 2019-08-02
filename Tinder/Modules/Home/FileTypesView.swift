@@ -13,6 +13,8 @@ let FileTypeItemWidth = (screenWidth - 32 - 3 * 20) / 4
 
 class FileTypesView: UIView {
 
+  var didSelectedAction: ((FilePickerType) -> Void)?
+  
   private lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: FileTypeItemWidth, height: FileTypeItemWidth + 25)
@@ -51,7 +53,7 @@ class FileTypesView: UIView {
 extension FileTypesView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let type = itemList[indexPath.row]
-    FileServer.shared.filePicker(type: type)
+    didSelectedAction?(type)
   }
 }
 
