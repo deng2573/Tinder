@@ -44,4 +44,8 @@ target 'Tinder' do
   pod 'iCloudDocumentSync'
   # 下载
   pod 'Tiercel'
+	# 二维码
+#	pod 'EFQRCode'
+  # 进度
+# pod 'UICircularProgressRing'
 end

@@ -48,6 +48,8 @@
 		B45A4D2322EEDC6A00BBC94D /* WebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4D2222EEDC6A00BBC94D /* WebServer.swift */; };
 		B45A4D2522EEEAEE00BBC94D /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4D2422EEEAEE00BBC94D /* TransferViewController.swift */; };
 		B45A4D2722EEED6C00BBC94D /* FileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */; };
+		B46F142522F706C400B413D6 /* QRCodeGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46F142422F706C400B413D6 /* QRCodeGeneratorViewController.swift */; };
+		B46F142D22F70AA300B413D6 /* QRCodeRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46F142C22F70AA300B413D6 /* QRCodeRecognizerViewController.swift */; };
 		B4F5449222F2EAC600E07016 /* FileServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5449122F2EAC600E07016 /* FileServer.swift */; };
 		B4F5449422F2F04700E07016 /* VCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5449322F2F04700E07016 /* VCManager.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +103,8 @@
 		B45A4D2222EEDC6A00BBC94D /* WebServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServer.swift; sourceTree = "<group>"; };
 		B45A4D2422EEEAEE00BBC94D /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
 		B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoCell.swift; sourceTree = "<group>"; };
+		B46F142422F706C400B413D6 /* QRCodeGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorViewController.swift; sourceTree = "<group>"; };
+		B46F142C22F70AA300B413D6 /* QRCodeRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeRecognizerViewController.swift; sourceTree = "<group>"; };
 		B4F5449122F2EAC600E07016 /* FileServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServer.swift; sourceTree = "<group>"; };
 		B4F5449322F2F04700E07016 /* VCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +200,7 @@
 			children = (
 				B45A4D0122EED19900BBC94D /* Base */,
 				B45A4D1D22EED5E100BBC94D /* Home */,
+				B46F142B22F70A2F00B413D6 /* QRCode */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -258,6 +263,15 @@
 				B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		B46F142B22F70A2F00B413D6 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				B46F142422F706C400B413D6 /* QRCodeGeneratorViewController.swift */,
+				B46F142C22F70AA300B413D6 /* QRCodeRecognizerViewController.swift */,
+			);
+			path = QRCode;
 			sourceTree = "<group>";
 		};
 		B812865DA0EE68CCDA8C3862 /* Pods */ = {
@@ -423,9 +437,11 @@
 				B45A4D1922EED1CB00BBC94D /* UITableView+Extensions.swift in Sources */,
 				B45A4D1522EED1CB00BBC94D /* UIViewController+Extensions.swift in Sources */,
 				B45A4D2322EEDC6A00BBC94D /* WebServer.swift in Sources */,
+				B46F142522F706C400B413D6 /* QRCodeGeneratorViewController.swift in Sources */,
 				B45A4D1A22EED1CB00BBC94D /* Dictionary+Extensions.swift in Sources */,
 				B427F81E22F3D0A7006FEAD9 /* LocalFileViewController.swift in Sources */,
 				B45A4D1322EED1CB00BBC94D /* Int+Extensions.swift in Sources */,
+				B46F142D22F70AA300B413D6 /* QRCodeRecognizerViewController.swift in Sources */,
 				B45A4CFB22EED08000BBC94D /* Color.swift in Sources */,
 				B411687622F18F66002008BE /* FileTypesView.swift in Sources */,
 				B45A4CFD22EED08000BBC94D /* Refresh.swift in Sources */,

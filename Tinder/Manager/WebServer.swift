@@ -45,12 +45,6 @@ class WebServer: NSObject {
     addUploadHandler()
     addDownloadHandler()
 		uploader.start()
-//		do {
-//			try uploader.start(options: [GCDWebServerOption_ConnectionClass: "TinderConnection"])
-//		} catch {
-//
-//		}
-		
     print(uploader.port)
   }
 
