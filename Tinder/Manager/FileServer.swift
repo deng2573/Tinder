@@ -108,6 +108,12 @@ class FileServer: NSObject {
     currentVC.present(documentPickerVC, animated: true, completion: nil)
     case .local:
       let localFileVC = LocalFileViewController()
+      localFileVC.selectedAction = { files in
+        self.selectedFileInfos.append(contentsOf: files)
+        DispatchQueue.main.async(execute: {
+          self.didSelectedAction?(self.selectedFileInfos)
+        })
+      }
       currentVC.present(NavigationController(rootViewController: localFileVC), animated: true, completion: nil)
     }
   }

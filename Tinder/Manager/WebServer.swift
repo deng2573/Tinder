@@ -15,18 +15,17 @@ let WebUploadPathName = "WebUpload"
 class WebServer: NSObject {
   static let shared = WebServer()
   
-  private lazy var uploader: TinderServer = {
-    let uploader = TinderServer(uploadDirectory: uploadPath)
+  lazy var uploader: GCDWebUploader = {
+    let uploader = GCDWebUploader(uploadDirectory: uploadPath)
     uploader.delegate = self
     uploader.allowHiddenItems = true
 //    uploader.addGETHandler(forBasePath: "/", directoryPath: uploadPath, indexFilename: nil, cacheAge: 3600, allowRangeRequests: false)
 //    uploader.addHandler(forMethod: "GET", path: "/", request: GCDWebServerRequest.self) { request -> GCDWebServerResponse? in
 //      return GCDWebServerDataResponse(htmlTemplate: Bundle.main.path(forResource: "index", ofType: "html")!, variables: [:])
 //    }
-    
     return uploader
   }()
-//  /var/mobile/Containers/Data/Application/83E4C2F3-5FB4-41FB-A41E-225C77AA97DA/Documents/WebUpload
+
   lazy var uploadPath: String = {
     let manager = FileManager.default
     let urlForDocument = manager.urls(for: .documentDirectory, in:.userDomainMask)
@@ -61,11 +60,8 @@ extension WebServer {
   }
   
   func addUploadHandler() {
-    uploader.addHandler(forMethod: "POST", path: "/uploadFiles", request: GCDWebServerMultiPartFormRequest.self) { (request, completionBlock) in
-      
+    uploader.addHandler(forMethod: "POST", path: "/uploadFiles", request: GCDWebServerFileRequest.self) { (request, completionBlock) in
       let contentType = "application/json"
-      
-      
       let response = GCDWebServerDataResponse.init(jsonObject: ["status": "1"], contentType: contentType)
       completionBlock(response)
     }
@@ -73,41 +69,21 @@ extension WebServer {
   
   func addDownloadHandler() {
     uploader.addHandler(forMethod: "GET", path: "/downloadFiles", request: GCDWebServerMultiPartFormRequest.self) { (request, completionBlock) in
-      
       let relativePath = request.query?["path"] ?? ""
-      
-      
       do {
         let data = try Data.read(from: Path(relativePath))
-        
         let response = GCDWebServerStreamedResponse.init(contentType: "", asyncStreamBlock: { completionBlock in
           completionBlock(data, nil)
         })
-        
         completionBlock(response)
       } catch(let error) {
         print(error)
       }
-      
-      
-//      NSFileCoordinator().coordinate(readingItemAt: URL(string: relativePath)!, options: [], error: nil) { url in
-//        do {
-//          let data = try Data(contentsOf: url)
-//          
-//          let response = GCDWebServerStreamedResponse.init(contentType: "", asyncStreamBlock: { completionBlock in
-//            completionBlock(data, nil)
-//          })
-//          
-//          completionBlock(response)
-//        } catch(let error) {
-//          print(error)
-//        }
-//      }
     }
   }
 }
 
-extension WebServer: TinderServerDelegate {
+extension WebServer: GCDWebUploaderDelegate {
   func webUploader(_: GCDWebUploader, didUploadFileAtPath path: String) {
     print("[UPLOAD] \(path)")
   }
@@ -127,9 +103,4 @@ extension WebServer: TinderServerDelegate {
   func webUploader(_: GCDWebUploader, didDeleteItemAtPath path: String) {
     print("[DELETE] \(path)")
   }
-	
-	func connection(_ connection: TinderConnection, receivedBytes count: UInt) {
-		print(connection.uuid)
-		print(count)
-	}
 }

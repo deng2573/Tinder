@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FileKit
+import Alamofire
 
 class TransferViewController: ViewController {
   
@@ -17,16 +17,16 @@ class TransferViewController: ViewController {
     tableView.separatorStyle = .none
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.register(cellType: FileInfoCell.self)
+    tableView.register(cellType: TransferCell.self)
     return tableView
   }()
-  
-  private var fileList: [Path] = []
+
+  private var uploadList: [UploadRequest] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpView()
-    obtainLocalFiles()
+    obtainUploadRequests()
   }
   
   private func setUpView() {
@@ -36,9 +36,9 @@ class TransferViewController: ViewController {
     }
   }
   
-  private func obtainLocalFiles() {
-    let path = Path(WebServer.shared.uploadPath)
-    fileList = path.children()
+  private func obtainUploadRequests() {
+    let uploads = WebClient.shared.uploadRequests
+    uploadList = uploads
     tableView.reloadData()
   }
 }
@@ -49,13 +49,13 @@ extension TransferViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return fileList.count
+    return uploadList.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let file = fileList[indexPath.row]
-    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileInfoCell.self)
-    cell.update(file: file)
+    let upload = uploadList[indexPath.row]
+    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: TransferCell.self)
+    cell.update(upload: upload)
     return cell
   }
 }

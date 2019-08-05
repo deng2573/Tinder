@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.8.2)
+  - EFQRCode (5.0.0):
+    - swift_qrcodejs (~> 1.1.1)
   - EVReflection (5.10.1):
     - EVReflection/Core (= 5.10.1)
   - EVReflection/Core (5.10.1)
@@ -26,9 +28,11 @@ PODS:
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
   - SnapKit (4.2.0)
+  - swift_qrcodejs (1.1.1)
   - SwiftyJSON (5.0.0)
   - Tiercel (2.3.0)
   - TZImagePickerController (3.2.1)
+  - UICircularProgressRing (6.2.0)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - YBImageBrowser (2.2.3):
     - SDWebImage (~> 5.0.0)
@@ -46,6 +50,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - EFQRCode
   - EVReflection
   - FDFullscreenPopGesture
   - FileKit
@@ -63,6 +68,7 @@ DEPENDENCIES:
   - SwiftyJSON
   - Tiercel
   - TZImagePickerController
+  - UICircularProgressRing
   - "UITableView+FDTemplateLayoutCell"
   - YBImageBrowser
   - ZFPlayer
@@ -72,6 +78,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - EFQRCode
     - EVReflection
     - FDFullscreenPopGesture
     - FileKit
@@ -86,9 +93,11 @@ SPEC REPOS:
     - Reusable
     - SDWebImage
     - SnapKit
+    - swift_qrcodejs
     - SwiftyJSON
     - Tiercel
     - TZImagePickerController
+    - UICircularProgressRing
     - "UITableView+FDTemplateLayoutCell"
     - YBImageBrowser
     - YYImage
@@ -96,6 +105,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  EFQRCode: 07437cfbce3a1e497397a4f3d766c980d8972608
   EVReflection: 8124de482178d34ccd56473e16cd95990f9a1113
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   FileKit: 10bfd8a3023a0b09f24c9f49546cbbddf43fd464
@@ -110,14 +120,16 @@ SPEC CHECKSUMS:
   Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  swift_qrcodejs: 0bacbfe321a99954c7b8e04c75562007ea4e4f7c
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Tiercel: 87c75f90ec3152ee2a278591b41f606b383af2af
   TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
+  UICircularProgressRing: 0ff679b05a17f15ad6301a7886686837b8c301a9
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   YBImageBrowser: d00dc385da4c428bd800a4bccfa6fb650ebef856
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   ZFPlayer: fdc92702cc611922182a951991dea78566da7605
 
-PODFILE CHECKSUM: 18903993e1051e03442a14166da8c15f3aad4ffe
+PODFILE CHECKSUM: 7152d69c570719428154ac02e32b2f60d4e5f631
 
 COCOAPODS: 1.7.0.rc.2

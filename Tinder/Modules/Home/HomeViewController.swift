@@ -10,84 +10,139 @@ import UIKit
 import TZImagePickerController
 import MMLanScan
 import Tiercel
+import UICircularProgressRing
 
 class HomeViewController: ViewController {
 
-  private lazy var uploadButton: UIButton = {
+  private lazy var shareButton: UIButton = {
     let button = UIButton(type: .custom)
-    button.setTitle("我要上传", for: .normal)
+    button.setTitle("我要分享", for: .normal)
     button.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6196078431, blue: 1, alpha: 1)
     button.layer.cornerRadius = 22
     button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
     button.tap(action: { _ in
-//      self.presentPickerController()
-//      self.navigationController?.pushViewController(MatchingViewController(), animated: true)
-      self.navigationController?.pushViewController(FilePickerViewController(), animated: true)
+      self.pushFilePickerViewController()
     })
-    
     return button
   }()
   
-  private lazy var listButton: UIButton = {
+  private lazy var receiveButton: UIButton = {
     let button = UIButton(type: .custom)
-    button.setTitle("上传列表", for: .normal)
+    button.setTitle("我要接收", for: .normal)
     button.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6196078431, blue: 1, alpha: 1)
     button.layer.cornerRadius = 22
     button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
     button.tap(action: { _ in
-      self.navigationController?.pushViewController(TransferViewController(), animated: true)
-      
-//     let manager =  SessionManager("ViewController1222", configuration: SessionConfiguration())
-//      
-//     
-//      
-//      manager.download("http://192.168.1.143:80/downloadFiles?path=file:///var/mobile/Media/DCIM/103APPLE/IMG_3996.JPG")?.progress { [weak self] (task) in
-//        let per = task.progress.fractionCompleted
-//        print("progress： \(String(format: "%.2f", per * 100))%")
-//        }.success { [weak self] (task) in
-//          
-//          // 下载任务成功了
-//          print("下载成功")
-//        }.failure { [weak self] (task) in
-//         
-//          print("下载failure")
-//          if task.status == .suspended {
-//            // 下载任务暂停了
-//          }
-//          if task.status == .failed {
-//            // 下载任务失败了
-//          }
-//          if task.status == .canceled {
-//            // 下载任务取消了
-//          }
-//          if task.status == .removed {
-//            // 下载任务移除了
-//          }
-//      }
-      
-//      WebClient.download(url: "", completion: { sut in
-//
-//      })
+      self.pushQRCodeGeneratorController()
     })
-    
     return button
+  }()
+  
+  private lazy var progressRing: UICircularProgressRing = {
+    let progressRing = UICircularProgressRing(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    
+    progressRing.maxValue = 1
+    progressRing.minValue = 0
+    progressRing.outerRingWidth = 6
+    progressRing.outerRingColor = UIColor.themeColor
+    progressRing.innerRingWidth = 3
+    progressRing.innerRingColor = #colorLiteral(red: 0.2862745098, green: 0.2784313725, blue: 0.3215686275, alpha: 1)
+    
+    progressRing.innerRingSpacing = 0
+    progressRing.innerCapStyle = .butt
+    progressRing.fontColor = .blue
+    progressRing.font = UIFont.boldSystemFont(ofSize: 16)
+
+    return progressRing
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    view.addSubview(uploadButton)
-    uploadButton.snp.makeConstraints({ (make) in
+    setUpView()
+    registerNotification()
+  }
+  
+  private func setUpView() {
+    view.addSubview(shareButton)
+    shareButton.snp.makeConstraints({ (make) in
       make.left.right.equalTo(view)
-      make.top.equalTo(16)
+      make.top.equalTo(300)
       make.height.equalTo(44)
     })
     
-    view.addSubview(listButton)
-    listButton.snp.makeConstraints({ (make) in
+    view.addSubview(receiveButton)
+    receiveButton.snp.makeConstraints({ (make) in
       make.left.right.equalTo(view)
-      make.top.equalTo(100)
+      make.top.equalTo(400)
       make.height.equalTo(44)
     })
+    
+    view.addSubview(progressRing)
+    progressRing.snp.makeConstraints({ (make) in
+      make.size.equalTo(CGSize(width: screenWidth * 0.3, height: screenWidth * 0.3))
+      make.centerX.equalToSuperview()
+      make.top.equalTo(20)
+    })
+    
+    let localFileButton = UIButton(type: .custom)
+    localFileButton.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
+    localFileButton.setTitle("本地文件", for: .normal)
+    localFileButton.setTitleColor(.darkGray, for: .normal)
+    localFileButton.layer.cornerRadius = 22
+    localFileButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+    localFileButton.tap(action: { _ in
+      self.pushTransferViewController()
+    })
+    
+    let item = UIBarButtonItem(customView: localFileButton)
+    navigationItem.rightBarButtonItem = item
+  }
+  
+  private func registerNotification() {
+    NotificationCenter.default.addObserver(self, selector: #selector(newWebTask(notification:)), name: .newUploadTask, object: nil)
+  }
+  
+  @objc func newWebTask(notification: Notification) {
+//   let tool = MeasurNetTools(block: { speed in
+//      print("+++++++\(speed)")
+//    }, finishMeasure: { speed in
+//      print("+++++++\(speed)")
+//    }) { error in
+//
+//    }
+//
+//    tool?.startMeasur()
+    
+//    let userInfo = notification.userInfo as! [String: AnyObject]
+//    let value = userInfo["value"] as! String
+    let uploadRequest = WebClient.shared.uploadRequests.first!
+    uploadRequest.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
+      DispatchQueue.main.async(execute: {
+        print("文件上传进度: \(progress.fractionCompleted)")
+        print("当前网速\(NetSpeed.getByteRate())")
+        self.progressRing.value = CGFloat(progress.fractionCompleted)
+      })
+    }
+    
+  }
+  
+  private func pushFilePickerViewController() {
+    let vc = FilePickerViewController()
+    navigationController?.pushViewController(vc, animated: true)
+  }
+  
+  private func pushQRCodeGeneratorController() {
+    let localIP = WebManager.localDevice?.ipAddress
+    guard let ip = localIP else {
+      return
+    }
+    let url = #"http://\#(ip):\#(WebServer.shared.uploader.port)/upload"#
+    let vc = QRCodeGeneratorViewController(content: url)
+    navigationController?.pushViewController(vc, animated: true)
+  }
+  
+  private func pushTransferViewController() {
+    let vc = LocalFileViewController()
+    navigationController?.pushViewController(vc, animated: true)
   }
 }

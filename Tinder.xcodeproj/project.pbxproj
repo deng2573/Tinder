@@ -18,6 +18,14 @@
 		B411687822F192D4002008BE /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687722F192D4002008BE /* FileInfo.swift */; };
 		B411687A22F196C9002008BE /* FileTypesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687922F196C9002008BE /* FileTypesCell.swift */; };
 		B427F81E22F3D0A7006FEAD9 /* LocalFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427F81D22F3D0A7006FEAD9 /* LocalFileViewController.swift */; };
+		B43911B522F80AED0010BED5 /* TransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911B422F80AED0010BED5 /* TransferCell.swift */; };
+		B43911B722F838ED0010BED5 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911B622F838ED0010BED5 /* Notification.swift */; };
+		B43911C222F8411C0010BED5 /* QBTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911BB22F8411C0010BED5 /* QBTools.m */; };
+		B43911C322F8411C0010BED5 /* NetworkSpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911BC22F8411C0010BED5 /* NetworkSpeedViewController.m */; };
+		B43911C422F8411C0010BED5 /* ClockDialView.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911BD22F8411C0010BED5 /* ClockDialView.m */; };
+		B43911C522F8411C0010BED5 /* NetworkSpeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B43911BE22F8411C0010BED5 /* NetworkSpeedViewController.xib */; };
+		B43911C622F8411C0010BED5 /* MeasurNetTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911BF22F8411C0010BED5 /* MeasurNetTools.m */; };
+		B43911C922F842EE0010BED5 /* NetSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911C822F842EE0010BED5 /* NetSpeed.m */; };
 		B450D60C22F4716C00A82BF6 /* TinderWebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B450D60B22F4716C00A82BF6 /* TinderWebServer.swift */; };
 		B450D61222F4763800A82BF6 /* TinderServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B450D61122F4763800A82BF6 /* TinderServer.m */; };
 		B45A4CDC22EEC6A400BBC94D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */; };
@@ -27,7 +35,7 @@
 		B45A4CF922EED08000BBC94D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CEF22EED06E00BBC94D /* Common.swift */; };
 		B45A4CFA22EED08000BBC94D /* NetURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF122EED08000BBC94D /* NetURL.swift */; };
 		B45A4CFB22EED08000BBC94D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF222EED08000BBC94D /* Color.swift */; };
-		B45A4CFC22EED08000BBC94D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF322EED08000BBC94D /* AppConfig.swift */; };
+		B45A4CFC22EED08000BBC94D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF322EED08000BBC94D /* App.swift */; };
 		B45A4CFD22EED08000BBC94D /* Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF522EED08000BBC94D /* Refresh.swift */; };
 		B45A4CFE22EED08000BBC94D /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF622EED08000BBC94D /* WebClient.swift */; };
 		B45A4CFF22EED08000BBC94D /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF722EED08000BBC94D /* HUD.swift */; };
@@ -69,6 +77,19 @@
 		B411687922F196C9002008BE /* FileTypesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypesCell.swift; sourceTree = "<group>"; };
 		B427F81D22F3D0A7006FEAD9 /* LocalFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileViewController.swift; sourceTree = "<group>"; };
 		B427F81F22F402C3006FEAD9 /* Tinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tinder.entitlements; sourceTree = "<group>"; };
+		B43911B422F80AED0010BED5 /* TransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferCell.swift; sourceTree = "<group>"; };
+		B43911B622F838ED0010BED5 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		B43911B922F8411C0010BED5 /* ClockDialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockDialView.h; sourceTree = "<group>"; };
+		B43911BA22F8411C0010BED5 /* MeasurNetTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurNetTools.h; sourceTree = "<group>"; };
+		B43911BB22F8411C0010BED5 /* QBTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBTools.m; sourceTree = "<group>"; };
+		B43911BC22F8411C0010BED5 /* NetworkSpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkSpeedViewController.m; sourceTree = "<group>"; };
+		B43911BD22F8411C0010BED5 /* ClockDialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockDialView.m; sourceTree = "<group>"; };
+		B43911BE22F8411C0010BED5 /* NetworkSpeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkSpeedViewController.xib; sourceTree = "<group>"; };
+		B43911BF22F8411C0010BED5 /* MeasurNetTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurNetTools.m; sourceTree = "<group>"; };
+		B43911C022F8411C0010BED5 /* NetworkSpeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkSpeedViewController.h; sourceTree = "<group>"; };
+		B43911C122F8411C0010BED5 /* QBTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBTools.h; sourceTree = "<group>"; };
+		B43911C722F842EE0010BED5 /* NetSpeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetSpeed.h; sourceTree = "<group>"; };
+		B43911C822F842EE0010BED5 /* NetSpeed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetSpeed.m; sourceTree = "<group>"; };
 		B450D60B22F4716C00A82BF6 /* TinderWebServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderWebServer.swift; sourceTree = "<group>"; };
 		B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tinder-Bridging-Header.h"; sourceTree = "<group>"; };
 		B450D61022F4763800A82BF6 /* TinderServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinderServer.h; sourceTree = "<group>"; };
@@ -82,7 +103,7 @@
 		B45A4CEF22EED06E00BBC94D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		B45A4CF122EED08000BBC94D /* NetURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetURL.swift; sourceTree = "<group>"; };
 		B45A4CF222EED08000BBC94D /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		B45A4CF322EED08000BBC94D /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		B45A4CF322EED08000BBC94D /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		B45A4CF522EED08000BBC94D /* Refresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refresh.swift; sourceTree = "<group>"; };
 		B45A4CF622EED08000BBC94D /* WebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 		B45A4CF722EED08000BBC94D /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
@@ -138,6 +159,22 @@
 			path = Infos;
 			sourceTree = "<group>";
 		};
+		B43911B822F8411C0010BED5 /* NetworkSpeed */ = {
+			isa = PBXGroup;
+			children = (
+				B43911B922F8411C0010BED5 /* ClockDialView.h */,
+				B43911BA22F8411C0010BED5 /* MeasurNetTools.h */,
+				B43911BB22F8411C0010BED5 /* QBTools.m */,
+				B43911BC22F8411C0010BED5 /* NetworkSpeedViewController.m */,
+				B43911BD22F8411C0010BED5 /* ClockDialView.m */,
+				B43911BE22F8411C0010BED5 /* NetworkSpeedViewController.xib */,
+				B43911BF22F8411C0010BED5 /* MeasurNetTools.m */,
+				B43911C022F8411C0010BED5 /* NetworkSpeedViewController.h */,
+				B43911C122F8411C0010BED5 /* QBTools.h */,
+			);
+			path = NetworkSpeed;
+			sourceTree = "<group>";
+		};
 		B45A4CCF22EEC6A400BBC94D = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +227,8 @@
 				B45A4CEF22EED06E00BBC94D /* Common.swift */,
 				B45A4CF122EED08000BBC94D /* NetURL.swift */,
 				B45A4CF222EED08000BBC94D /* Color.swift */,
-				B45A4CF322EED08000BBC94D /* AppConfig.swift */,
+				B45A4CF322EED08000BBC94D /* App.swift */,
+				B43911B622F838ED0010BED5 /* Notification.swift */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -245,6 +283,7 @@
 				B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */,
 				B411687922F196C9002008BE /* FileTypesCell.swift */,
 				B411687522F18F66002008BE /* FileTypesView.swift */,
+				B43911B422F80AED0010BED5 /* TransferCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -252,6 +291,7 @@
 		B45A4D2122EEDBC700BBC94D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				B43911B822F8411C0010BED5 /* NetworkSpeed */,
 				B45A4D2222EEDC6A00BBC94D /* WebServer.swift */,
 				B450D60B22F4716C00A82BF6 /* TinderWebServer.swift */,
 				B450D61022F4763800A82BF6 /* TinderServer.h */,
@@ -261,6 +301,8 @@
 				B4F5449122F2EAC600E07016 /* FileServer.swift */,
 				B4F5449322F2F04700E07016 /* VCManager.swift */,
 				B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */,
+				B43911C722F842EE0010BED5 /* NetSpeed.h */,
+				B43911C822F842EE0010BED5 /* NetSpeed.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -350,6 +392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45A4CE622EEC6A600BBC94D /* LaunchScreen.storyboard in Resources */,
+				B43911C522F8411C0010BED5 /* NetworkSpeedViewController.xib in Resources */,
 				B45A4CE322EEC6A600BBC94D /* Assets.xcassets in Resources */,
 				B45A4CE122EEC6A400BBC94D /* Main.storyboard in Resources */,
 			);
@@ -407,9 +450,11 @@
 				B45A4D1422EED1CB00BBC94D /* UIImageView+Extensions.swift in Sources */,
 				B45A4CFA22EED08000BBC94D /* NetURL.swift in Sources */,
 				B45A4D0722EED19900BBC94D /* TabBarController.swift in Sources */,
+				B43911C422F8411C0010BED5 /* ClockDialView.m in Sources */,
 				B411687822F192D4002008BE /* FileInfo.swift in Sources */,
 				B45A4D0622EED19900BBC94D /* NavigationController.swift in Sources */,
 				B45A4D1C22EED1CB00BBC94D /* Color+Extensions.swift in Sources */,
+				B43911B522F80AED0010BED5 /* TransferCell.swift in Sources */,
 				B4F5449422F2F04700E07016 /* VCManager.swift in Sources */,
 				B45A4CFF22EED08000BBC94D /* HUD.swift in Sources */,
 				B45A4CF922EED08000BBC94D /* Common.swift in Sources */,
@@ -422,7 +467,8 @@
 				B411687A22F196C9002008BE /* FileTypesCell.swift in Sources */,
 				B45A4D1B22EED1CB00BBC94D /* TimeInterval+Extensions.swift in Sources */,
 				B45A4D0522EED19900BBC94D /* ViewController.swift in Sources */,
-				B45A4CFC22EED08000BBC94D /* AppConfig.swift in Sources */,
+				B45A4CFC22EED08000BBC94D /* App.swift in Sources */,
+				B43911C222F8411C0010BED5 /* QBTools.m in Sources */,
 				B450D60C22F4716C00A82BF6 /* TinderWebServer.swift in Sources */,
 				B45A4CFE22EED08000BBC94D /* WebClient.swift in Sources */,
 				B411686922F03B4A002008BE /* WebManager.swift in Sources */,
@@ -442,9 +488,13 @@
 				B427F81E22F3D0A7006FEAD9 /* LocalFileViewController.swift in Sources */,
 				B45A4D1322EED1CB00BBC94D /* Int+Extensions.swift in Sources */,
 				B46F142D22F70AA300B413D6 /* QRCodeRecognizerViewController.swift in Sources */,
+				B43911C622F8411C0010BED5 /* MeasurNetTools.m in Sources */,
 				B45A4CFB22EED08000BBC94D /* Color.swift in Sources */,
+				B43911C322F8411C0010BED5 /* NetworkSpeedViewController.m in Sources */,
 				B411687622F18F66002008BE /* FileTypesView.swift in Sources */,
+				B43911C922F842EE0010BED5 /* NetSpeed.m in Sources */,
 				B45A4CFD22EED08000BBC94D /* Refresh.swift in Sources */,
+				B43911B722F838ED0010BED5 /* Notification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

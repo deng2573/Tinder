@@ -11,6 +11,8 @@ import FileKit
 
 class LocalFileViewController: ViewController {
   
+  var selectedAction: (([FileInfo]) -> Void)?
+  
   private lazy var tableView: UITableView = {
     let tableView = UITableView(frame: .zero, style: .grouped)
     tableView.backgroundColor = .white
@@ -30,6 +32,7 @@ class LocalFileViewController: ViewController {
   }
   
   private func setUpView() {
+    setUpDefaultBackButtonItem()
     view.addSubview(tableView)
     tableView.snp.makeConstraints { (make) in
       make.edges.equalToSuperview()
@@ -67,7 +70,10 @@ extension LocalFileViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+    let file = fileList[indexPath.row]
+    let fileInfo = FileInfo(name: file.fileName, path: file.rawValue, fileExtension: file.pathExtension)
+    selectedAction?([fileInfo])
+    dismiss(animated: true, completion: nil)
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FilePickerViewController: UIViewController {
+class FilePickerViewController: ViewController {
   
   private lazy var tableView: UITableView = {
     let tableView = UITableView(frame: .zero, style: .grouped)
@@ -50,11 +50,12 @@ class FilePickerViewController: UIViewController {
     button.layer.cornerRadius = 22
     button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
     button.tap(action: { _ in
-      self.navigationController?.pushViewController(TransferViewController(), animated: true)
+      self.pushQRCodeGeneratorViewController()
     })
-    
     return button
   }()
+  
+  private var files: [FileInfo] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -75,6 +76,25 @@ class FilePickerViewController: UIViewController {
       make.right.bottom.equalTo(-40)
       make.height.equalTo(44)
     })
+  }
+  
+  private func pushQRCodeGeneratorViewController() {
+    let vc = QRCodeRecognizerViewController()
+    vc.scanSuccess = { value in
+//      for file in self.files {
+//        WebClient.upload(file: file, url: value)
+//      }
+//      let vc = TransferViewController()
+//      self.navigationController?.pushViewController(vc, animated: true)
+//      WebClient.upload(file: self.files.first!, url: value)
+//
+      WebClient.upload(files: self.files, url: value, completion: { statu in
+        let vc = TransferViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+      })
+    }
+    
+    navigationController?.pushViewController(vc, animated: true)
   }
   
 }
@@ -98,10 +118,8 @@ extension FilePickerViewController: UITableViewDataSource {
         let fileServer = FileServer.shared
         fileServer.filePicker(type: type)
         fileServer.didSelectedAction = { files in
+          self.files = files
           self.shareButton.setTitle("分享  \(files.count)", for: .normal)
-          WebClient.upload(files: files, url: "http://192.168.1.161:8080/uploadFiles", completion: { sta in
-            
-          })
         }
       }
       return cell

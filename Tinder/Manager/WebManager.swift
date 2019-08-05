@@ -12,7 +12,7 @@ import MMLanScan
 class WebManager: NSObject {
   static let shared = WebManager()
   
-  let localDevice = LANProperties.localIPAddress()
+  static let localDevice = LANProperties.localIPAddress()
   private var devices: [MMDevice] = []
   private var finishScan: (([MMDevice]) -> Void)?
   

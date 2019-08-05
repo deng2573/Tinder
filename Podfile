@@ -45,7 +45,7 @@ target 'Tinder' do
   # 下载
   pod 'Tiercel'
 	# 二维码
-#	pod 'EFQRCode'
+  pod 'EFQRCode'
   # 进度
-# pod 'UICircularProgressRing'
+  pod 'UICircularProgressRing'
 end

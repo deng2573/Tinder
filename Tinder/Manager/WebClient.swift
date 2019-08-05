@@ -11,16 +11,22 @@ import Alamofire
 import SwiftyJSON
 import EVReflection
 import MobileCoreServices
+import FileKit
 
 let netErrorMsg = "网络加载失败,稍后再试...."
 let netFailureMsg = "暂无网络,请检查网络状态...."
 
 class WebClient: NSObject {
+
+  static let shared = WebClient()
+  
+  var uploadRequests: [UploadRequest] = []
+  
   private static let manager: SessionManager = initManager()
   
   private static func initManager() -> SessionManager {
     let configuration = URLSessionConfiguration.default
-    configuration.timeoutIntervalForResource = 15
+    configuration.timeoutIntervalForResource = 81809808
     return SessionManager(configuration: configuration)
   }
   
@@ -79,29 +85,83 @@ class WebClient: NSObject {
       return callback(objects, msg, status == 401)
     }
   }
-
+  
+  public static func upload(path: URL, url: String) {
+    let uploadRequest = Alamofire.upload(path, to: url)
+    WebClient.shared.uploadRequests.append(uploadRequest)
+    NotificationCenter.default.post(Notification(name: .newUploadTask))
+    NotificationCenter.default.post(name: .newUploadTask, object: uploadRequest)
+  }
+  
+  public static func upload(data: Data, url: String) {
+    let uploadRequest = Alamofire.upload(data, to: url)
+    WebClient.shared.uploadRequests.append(uploadRequest)
+    NotificationCenter.default.post(name: .newUploadTask, object: uploadRequest)
+  }
+  
+  public static func upload(file: FileInfo, url: String) {
+    if let data = file.data {
+      upload(data: data, url: url)
+    }
+    if let path = file.path {
+      upload(path: URL(fileURLWithPath: path), url: url)
+    }
+  }
+  
   public static func upload(files: [FileInfo], url: String, completion: @escaping (Int?) -> Void ) {
+//    for file in files {
+//      if let data = file.data {
+//        upload(data: data, url: url)
+//      }
+//      if let path = file.path, let fileUrl = URL(string: path) {
+//        upload(path: fileUrl, url: url)
+//      }
+//    }
+
     Alamofire.upload( multipartFormData: { multipartFormData in
       for file in files {
-        multipartFormData.append(file.data, withName: "files[]", fileName: "\(file.name).\(file.fileExtension)", mimeType: file.fileExtension.mimeType)
+        if let data = file.data {
+           multipartFormData.append(data, withName: "files[]", fileName: "\(file.name).\(file.fileExtension)", mimeType: file.fileExtension.mimeType)
+        }
+//        NSFilemanage
+        if let path = file.path {
+//          do {
+//            let data = try Data.read(from: Path(path))
+//            multipartFormData.append(data, withName: "files[]", fileName: "\(file.name).\(file.fileExtension)", mimeType: file.fileExtension.mimeType)
+//          } catch(let error) {
+//            print(error)
+//          }
+          
+          let fileManager = FileManager.default
+          let data = fileManager.contents(atPath: path)
+          multipartFormData.append(data!, withName: "files[]", fileName: "\(file.name).\(file.fileExtension)", mimeType: file.fileExtension.mimeType)
+
+        }
       }
     }, to: url, headers: [:], encodingCompletion: { encodingResult in
       switch encodingResult {
       case .success(let upload, _, _):
-        upload.responseJSON { response in
-          guard let result = response.result.value else {
-            completion(nil)
-            return
-          }
-          guard JSON(result)["status"].intValue == 1 else {
-            completion(nil)
-            return
-          }
-        }
+        WebClient.shared.uploadRequests.append(upload)
+        NotificationCenter.default.post(name: .newUploadTask, object: upload)
+        completion(nil)
+//        upload.responseJSON { response in
+//          guard let result = response.result.value else {
+//            completion(nil)
+//            return
+//          }
+//          guard JSON(result)["status"].intValue == 1 else {
+//            completion(nil)
+//            return
+//          }
+//        }
         //获取上传进度
-        upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
-          print("文件上传进度: \(progress.fractionCompleted)")
-        }
+//        upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
+////          let progress = progress.fractionCompleted
+////          if progress >= 1 {
+////            WebClient.shared.uploadRequests.remove(at: <#T##Int#>)
+////          }
+////          print("文件上传进度: \(progress.fractionCompleted)")
+//        }
       case .failure:
         completion(nil)
       }
@@ -139,12 +199,14 @@ class WebClient: NSObject {
 
 class FileInfo: EVObject {
   var name: String
-  var data: Data
+  var data: Data?
   var fileExtension: String // 文件后缀
+  var path: String? // 文件本地路径
   
-  init(name: String, data: Data, fileExtension: String) {
+  init(name: String, data: Data? = nil, path: String? = nil, fileExtension: String) {
     self.name = name
     self.data = data
+    self.path = path
     self.fileExtension = fileExtension
   }
   

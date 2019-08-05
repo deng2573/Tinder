@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Tinder/Pods-Tinder-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/EFQRCode/EFQRCode.framework
 ${BUILT_PRODUCTS_DIR}/EVReflection/EVReflection.framework
 ${BUILT_PRODUCTS_DIR}/FDFullscreenPopGesture/FDFullscreenPopGesture.framework
 ${BUILT_PRODUCTS_DIR}/FileKit/FileKit.framework
@@ -16,8 +17,10 @@ ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
 ${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework
 ${BUILT_PRODUCTS_DIR}/Tiercel/Tiercel.framework
+${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework
 ${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework
 ${BUILT_PRODUCTS_DIR}/YBImageBrowser/YBImageBrowser.framework
 ${BUILT_PRODUCTS_DIR}/YYImage/YYImage.framework
 ${BUILT_PRODUCTS_DIR}/ZFPlayer/ZFPlayer.framework
 ${BUILT_PRODUCTS_DIR}/iCloudDocumentSync/iCloudDocumentSync.framework
+${BUILT_PRODUCTS_DIR}/swift_qrcodejs/swift_qrcodejs.framework

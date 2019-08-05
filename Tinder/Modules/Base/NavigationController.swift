@@ -12,10 +12,11 @@ class NavigationController: UINavigationController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.setupView()
+    self.setUpView()
   }
   
-  func setupView() {
+  func setUpView() {
+    view.backgroundColor = .white
     navigationBar.isTranslucent = false
     navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleColor, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .regular)]
     navigationBar.barTintColor = UIColor.themeColor
