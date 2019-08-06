@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 class FilePickerViewController: ViewController {
   
@@ -16,6 +17,8 @@ class FilePickerViewController: ViewController {
     tableView.separatorStyle = .none
     tableView.dataSource = self
     tableView.delegate = self
+    tableView.allowsSelection = true
+    tableView.allowsMultipleSelectionDuringEditing = true
     tableView.register(cellType: FileTypesCell.self)
     tableView.register(cellType: FileInfoCell.self)
     return tableView
@@ -59,10 +62,7 @@ class FilePickerViewController: ViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
     setUpView()
-//    tableView.tableHeaderView = searchController.searchBar
-//    tableView.sectionHeaderHeight = 28
   }
   
   private func setUpView() {
@@ -81,19 +81,11 @@ class FilePickerViewController: ViewController {
   private func pushQRCodeGeneratorViewController() {
     let vc = QRCodeRecognizerViewController()
     vc.scanSuccess = { value in
-//      for file in self.files {
-//        WebClient.upload(file: file, url: value)
-//      }
-//      let vc = TransferViewController()
-//      self.navigationController?.pushViewController(vc, animated: true)
-//      WebClient.upload(file: self.files.first!, url: value)
-//
-      WebClient.upload(files: self.files, url: value, completion: { statu in
-        let vc = TransferViewController()
+      WebClient.upload(files: self.files, url: value, completion: { status in
+        let vc = UploaderViewController()
         self.navigationController?.pushViewController(vc, animated: true)
       })
     }
-    
     navigationController?.pushViewController(vc, animated: true)
   }
   
@@ -108,7 +100,7 @@ extension FilePickerViewController: UITableViewDataSource {
     if section == 0 {
      return 1
     }
-    return 10
+    return files.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -120,12 +112,16 @@ extension FilePickerViewController: UITableViewDataSource {
         fileServer.didSelectedAction = { files in
           self.files = files
           self.shareButton.setTitle("分享  \(files.count)", for: .normal)
+          self.tableView.reloadData()
         }
       }
       return cell
     }
+    
+    let file = files[indexPath.row]
     let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileInfoCell.self)
-    cell.backgroundColor = UIColor.randomColor
+    cell.delegate = self
+    cell.update(file: file)
     return cell
   }
 }
@@ -136,28 +132,61 @@ extension FilePickerViewController: UITableViewDelegate {
     if indexPath.section == 0 {
      return FileTypeItemWidth + 25
     }
-    return 100
+    return 120
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
   }
   
-//  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//    return searchController.searchBar
-//  }
-//
-//  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//    return UIView()
-//  }
-//
-//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//    return 50
-//  }
-//
-//  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//    return 0.1
-//  }
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    return UIView()
+  }
+
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return UIView()
+  }
+
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    if section == 0 {
+      return 10
+    }
+    return 0.1
+  }
+
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    if section == 0 {
+      return 0.1
+    }
+    return 90
+  }
+  
+}
+
+extension FilePickerViewController: SwipeTableViewCellDelegate {
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+    let file = self.files[indexPath.row]
+    if orientation == .right {
+      let delete = SwipeAction(style: .destructive, title: nil) { action, indexPath in
+        self.files.remove(at: indexPath.row)
+        let fileServer = FileServer.shared
+        fileServer.removeFile(info: file)
+      }
+      delete.image = #imageLiteral(resourceName:"Trash")
+      delete.backgroundColor = .white
+      return [delete]
+    }
+    return nil
+  }
+  
+  func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+    var options = SwipeOptions()
+    options.expansionStyle = .destructive
+    options.transitionStyle = .border
+    options.backgroundColor = .red
+    
+    return options
+  }
   
 }
 

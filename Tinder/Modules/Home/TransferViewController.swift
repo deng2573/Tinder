@@ -1,98 +1,114 @@
 //
-//  TransceiverListViewController.swift
+//  TransferViewController.swift
 //  Tinder
 //
-//  Created by Deng on 2019/7/29.
+//  Created by Deng on 2019/8/6.
 //  Copyright © 2019 Deng. All rights reserved.
 //
 
 import UIKit
-import Alamofire
+import JXPagingView
+import JXCategoryView
 
-class TransferViewController: ViewController {
+class TransferViewController: UIViewController {
+  private var pagingView: JXCategoryListContainerView!
+  private var categoryView: JXCategoryTitleView!
+  private var vcList = [JXCategoryListContentViewDelegate]()
+  private var isClick = false
   
-  private lazy var tableView: UITableView = {
-    let tableView = UITableView(frame: .zero, style: .grouped)
-    tableView.backgroundColor = .white
-    tableView.separatorStyle = .none
-    tableView.dataSource = self
-    tableView.delegate = self
-    tableView.register(cellType: TransferCell.self)
-    return tableView
-  }()
-
-  private var uploadList: [UploadRequest] = []
+  var defaultSelectedIndex = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpView()
-    obtainUploadRequests()
+    requestHeaderLabels()
   }
   
-  private func setUpView() {
-    view.addSubview(tableView)
-    tableView.snp.makeConstraints { (make) in
-      make.edges.equalToSuperview()
+  func setUpView() {
+    title = "传输列表"
+    setupCategoryView()
+    setupPagingView()
+  }
+  
+  func setupCategoryView() {
+    categoryView = JXCategoryTitleView(frame: CGRect(x: 0, y: 0, width: view.width, height: 40))
+    categoryView.delegate = self
+    categoryView.titles = []
+    categoryView.titleFont = UIFont.boldSystemFont(ofSize: 14)
+    categoryView.backgroundColor = .white
+    categoryView.titleColor = #colorLiteral(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+    categoryView.titleSelectedColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+    categoryView.isTitleColorGradientEnabled = true
+    categoryView.isTitleLabelZoomEnabled = true
+    categoryView.titleLabelZoomScale = 1.0
+    categoryView.cellSpacing = 16
+    categoryView.isAverageCellSpacingEnabled = true
+    let lineView = JXCategoryIndicatorLineView()
+    lineView.indicatorLineViewHeight = CGFloat(0)
+    categoryView.indicators = [lineView]
+    view.addSubview(categoryView)
+    
+    let line = UIView()
+    line.backgroundColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
+    categoryView.addSubview(line)
+    line.snp.makeConstraints { (make) in
+      make.left.right.bottom.equalToSuperview()
+      make.height.equalTo(0.5)
     }
   }
   
-  private func obtainUploadRequests() {
-    let uploads = WebClient.shared.uploadRequests
-    uploadList = uploads
-    tableView.reloadData()
+  func setupPagingView(){
+    pagingView = JXCategoryListContainerView(delegate: self)
+    pagingView.frame = CGRect(x: 0, y: 40 + 0.7, width: view.width, height: view.height - 40 - 64 - 50)
+    pagingView.backgroundColor = .white
+    pagingView.didAppearPercent = 0.99 //滚动一点就触发加载
+    pagingView.scrollView.delegate = self
+    view.addSubview(pagingView)
+    categoryView.contentScrollView = pagingView.scrollView
+  }
+  
+  func requestHeaderLabels() {
+    var titles: [String] = []
+    titles = ["正在分享", "传输完成"]
+    categoryView.titles = titles
+    categoryView.defaultSelectedIndex = defaultSelectedIndex
+    pagingView.defaultSelectedIndex = defaultSelectedIndex
+    let uploaderVC = UploaderViewController()
+    uploaderVC.nav = navigationController
+    let localVC = LocalFileViewController()
+    localVC.nav = navigationController
+    vcList = [uploaderVC, localVC]
+    categoryView.reloadData()
+    pagingView.reloadData()
   }
 }
 
-extension TransferViewController: UITableViewDataSource {
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return uploadList.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let upload = uploadList[indexPath.row]
-    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: TransferCell.self)
-    cell.update(upload: upload)
-    return cell
+extension TransferViewController: UIScrollViewDelegate {
+  func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    let index = scrollView.contentOffset.x / screenWidth
+    if isClick {
+      pagingView.didClickSelectedItem(at: Int(index))
+      isClick = false
+    }
   }
 }
 
-extension TransferViewController: UITableViewDelegate {
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100
+extension TransferViewController: JXCategoryViewDelegate {
+  func categoryView(_ categoryView: JXCategoryBaseView!, didScrollSelectedItemAt index: Int) {
+    pagingView.didClickSelectedItem(at: index)
   }
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+  func categoryView(_ categoryView: JXCategoryBaseView!, didClickSelectedItemAt index: Int) {
+    isClick = true
   }
-  
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return UIView()
-  }
-  
-  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    return UIView()
-  }
-  
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 0.1
-  }
-  
-  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 0.1
-  }
-  
 }
 
-//extension TransferViewController: JXCategoryListContentViewDelegate {
-//  func listDidAppear() {
-//
-//  }
-//  func listView() -> UIView! {
-//    return view
-//  }
-//}
+extension TransferViewController: JXCategoryListContainerViewDelegate {
+  func number(ofListsInlistContainerView listContainerView: JXCategoryListContainerView!) -> Int {
+    return vcList.count
+  }
+  
+  func listContainerView(_ listContainerView: JXCategoryListContainerView!, initListFor index: Int) -> JXCategoryListContentViewDelegate! {
+    return vcList[index]
+  }
+}

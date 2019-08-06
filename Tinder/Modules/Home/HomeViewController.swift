@@ -86,7 +86,7 @@ class HomeViewController: ViewController {
     
     let localFileButton = UIButton(type: .custom)
     localFileButton.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
-    localFileButton.setTitle("本地文件", for: .normal)
+    localFileButton.setTitle("传输列表", for: .normal)
     localFileButton.setTitleColor(.darkGray, for: .normal)
     localFileButton.layer.cornerRadius = 22
     localFileButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -103,18 +103,6 @@ class HomeViewController: ViewController {
   }
   
   @objc func newWebTask(notification: Notification) {
-//   let tool = MeasurNetTools(block: { speed in
-//      print("+++++++\(speed)")
-//    }, finishMeasure: { speed in
-//      print("+++++++\(speed)")
-//    }) { error in
-//
-//    }
-//
-//    tool?.startMeasur()
-    
-//    let userInfo = notification.userInfo as! [String: AnyObject]
-//    let value = userInfo["value"] as! String
     let uploadRequest = WebClient.shared.uploadRequests.first!
     uploadRequest.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
       DispatchQueue.main.async(execute: {
@@ -142,7 +130,7 @@ class HomeViewController: ViewController {
   }
   
   private func pushTransferViewController() {
-    let vc = LocalFileViewController()
+    let vc = TransferViewController()
     navigationController?.pushViewController(vc, animated: true)
   }
 }

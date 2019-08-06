@@ -77,7 +77,7 @@ class FileTypeCell: UICollectionViewCell {
   private lazy var fileIcon: UIImageView = {
     let imageView = UIImageView()
     imageView.clipsToBounds = true
-    imageView.contentMode = .scaleAspectFill
+    imageView.contentMode = .scaleAspectFit
     imageView.layer.cornerRadius = 2
     return imageView
   }()
@@ -116,6 +116,6 @@ class FileTypeCell: UICollectionViewCell {
   
   func update(type: FilePickerType) {
     nameLabel.text = type.name
-    fileIcon.backgroundColor = UIColor.randomColor
+    fileIcon.image = type.icon
   }
 }

@@ -17,7 +17,7 @@ extension UIViewController {
   
   // 给Controller 增加返回按钮
   open func setUpDefaultBackButtonItem() {
-    let item = UIBarButtonItem(image: #imageLiteral(resourceName: "VEDIO_icon").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backToPrevious))
+    let item = UIBarButtonItem(image: #imageLiteral(resourceName: "VEDIO").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backToPrevious))
     navigationItem.leftBarButtonItem = item
   }
   

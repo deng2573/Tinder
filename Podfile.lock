@@ -30,6 +30,7 @@ PODS:
   - SnapKit (4.2.0)
   - swift_qrcodejs (1.1.1)
   - SwiftyJSON (5.0.0)
+  - SwipeCellKit (2.6.0)
   - Tiercel (2.3.0)
   - TZImagePickerController (3.2.1)
   - UICircularProgressRing (6.2.0)
@@ -64,8 +65,10 @@ DEPENDENCIES:
   - MJRefresh
   - MMLanScan
   - Reusable
+  - SDWebImage
   - SnapKit
   - SwiftyJSON
+  - SwipeCellKit
   - Tiercel
   - TZImagePickerController
   - UICircularProgressRing
@@ -95,6 +98,7 @@ SPEC REPOS:
     - SnapKit
     - swift_qrcodejs
     - SwiftyJSON
+    - SwipeCellKit
     - Tiercel
     - TZImagePickerController
     - UICircularProgressRing
@@ -122,6 +126,7 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   swift_qrcodejs: 0bacbfe321a99954c7b8e04c75562007ea4e4f7c
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  SwipeCellKit: 935ca28c187ec6e1ffb2b578cf8ddca842bfdcbb
   Tiercel: 87c75f90ec3152ee2a278591b41f606b383af2af
   TZImagePickerController: bf4c57b98d8707fce41ea6be872414a71c7a8c9d
   UICircularProgressRing: 0ff679b05a17f15ad6301a7886686837b8c301a9
@@ -130,6 +135,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   ZFPlayer: fdc92702cc611922182a951991dea78566da7605
 
-PODFILE CHECKSUM: 7152d69c570719428154ac02e32b2f60d4e5f631
+PODFILE CHECKSUM: 462b64bd86f2626fc0b76131801a6119bab14aaa
 
 COCOAPODS: 1.7.0.rc.2

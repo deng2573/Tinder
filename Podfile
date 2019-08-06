@@ -10,6 +10,7 @@ target 'Tinder' do
   pod 'EVReflection'
   # 图片加载
   pod 'Kingfisher'
+  pod 'SDWebImage'
   # 自动布局
   pod 'SnapKit'
   # 上拉加载
@@ -48,4 +49,6 @@ target 'Tinder' do
   pod 'EFQRCode'
   # 进度
   pod 'UICircularProgressRing'
+  # tableView 删除
+  pod 'SwipeCellKit'
 end

@@ -18,12 +18,12 @@ class QRCodeGeneratorViewController: ViewController {
   }
   
   init(content: String) {
-    self.content = content
     super.init(nibName: nil, bundle: nil)
+    self.content = content
   }
 
 	private lazy var QRImageView: UIImageView = {
-		let imageView = UIImageView(image: #imageLiteral(resourceName: "VEDIO_icon"))
+		let imageView = UIImageView()
 		imageView.clipsToBounds = true
 		imageView.layer.cornerRadius = 5
 		return imageView

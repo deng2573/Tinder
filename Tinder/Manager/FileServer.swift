@@ -12,39 +12,6 @@ import TZImagePickerController
 import iCloudDocumentSync
 import FileKit
 
-enum FilePickerType {
-  case image
-  case video
-  case cloud
-  case local
-  
-  var icon: UIImage {
-    switch self {
-    case .image:
-      return #imageLiteral(resourceName: "VEDIO_icon")
-    case .video:
-      return #imageLiteral(resourceName: "VEDIO_icon")
-    case .cloud:
-      return #imageLiteral(resourceName: "VEDIO_icon")
-    case .local:
-      return #imageLiteral(resourceName: "VEDIO_icon")
-    }
-  }
-  
-  var name: String {
-    switch self {
-    case .image:
-      return "图片"
-    case .video:
-      return "视频"
-    case .cloud:
-      return "云盘"
-    case .local:
-      return "本地"
-    }
-  }
-}
-
 class FileServer: NSObject {
   static let shared = FileServer()
   
@@ -85,9 +52,15 @@ class FileServer: NSObject {
           }
         }
         self.selectedAssets = assets
+        for file in self.selectedFileInfos {
+          if let asset = file.asset {
+            if !self.selectedAssets.contains(asset) {
+              self.removeFile(info: file)
+            }
+          }
+        }
         self.assetToFile(assets: newAssets, complete: { files in
           self.selectedFileInfos.append(contentsOf: files)
-          
           DispatchQueue.main.async(execute: {
             self.didSelectedAction?(self.selectedFileInfos)
           })
@@ -101,21 +74,43 @@ class FileServer: NSObject {
     let documentPickerVC = UIDocumentPickerViewController(documentTypes: documentTypes, in: .open)
     if #available(iOS 11.0, *) {
       documentPickerVC.allowsMultipleSelection = true
-    } else {
-      // Fallback on earlier versions
     }
     documentPickerVC.delegate = self
     currentVC.present(documentPickerVC, animated: true, completion: nil)
     case .local:
       let localFileVC = LocalFileViewController()
+      localFileVC.isFilePick = true
       localFileVC.selectedAction = { files in
-        self.selectedFileInfos.append(contentsOf: files)
+        var selectPaths: [String] = []
+        for selectFile in self.selectedFileInfos {
+          if let selectPath = selectFile.path {
+            selectPaths.append(selectPath)
+          }
+        }
+        
+        for file in files {
+          if let path = file.path {
+            if !selectPaths.contains(path) {
+              self.selectedFileInfos.append(file)
+            }
+          }
+        }
+        
         DispatchQueue.main.async(execute: {
           self.didSelectedAction?(self.selectedFileInfos)
         })
       }
       currentVC.present(NavigationController(rootViewController: localFileVC), animated: true, completion: nil)
     }
+  }
+  
+  func removeFile(info: FileInfo) {
+    if let index = selectedFileInfos.firstIndex(of: info) {
+      selectedFileInfos.remove(at: index)
+    }
+    DispatchQueue.main.async(execute: {
+      self.didSelectedAction?(self.selectedFileInfos)
+    })
   }
   
   private func assetToFile(assets: [PHAsset], complete: @escaping (_ files: [FileInfo]) -> ()) {
@@ -129,33 +124,21 @@ class FileServer: NSObject {
           if let data = data {
             let url = info?["PHImageFileURLKey"] as! URL
             let name = url.fileName
-            if assetType == TZAssetModelMediaTypePhoto {
-              let file = FileInfo(name: name, data: data, fileExtension: url.pathExtension)
-              files.append(file)
-            } else {
-              let file = FileInfo(name: name, data: data, fileExtension: url.pathExtension)
-              files.append(file)
-            }
+            let file = FileInfo(name: name, data: data, fileExtension: url.pathExtension, asset: asset)
+            files.append(file)
             if index == assets.count - 1 {
               complete(files)
             }
-//            do {
-//              let path = Path.userDocuments + Path(url: url)!.fileName
-//              try data.write(to: path, atomically: true)
-//            } catch(let error) {
-//              print(error)
-//            }
-
           }
         }
       case TZAssetModelMediaTypeVideo:
-        PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { (asset, mix, info) in
+        PHImageManager.default().requestAVAsset(forVideo: asset, options: nil) { (newAsset, mix, info) in
           do {
-            let avAsset = asset as? AVURLAsset
+            let avAsset = newAsset as? AVURLAsset
             let url = avAsset!.url
             let name = url.fileName
             let data = try Data(contentsOf: url)
-            let file = FileInfo(name: name, data: data, fileExtension: url.pathExtension)
+            let file = FileInfo(name: name, data: data, fileExtension: url.pathExtension, asset: asset)
             files.append(file)
             if index == assets.count - 1 {
               complete(files)

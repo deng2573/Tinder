@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import Kingfisher
+import SDWebImage
 
 extension UIImageView {
-  func image(url: String, placeholder: UIImage? = nil) {
-//    sd_setImage(with: URL(string: NetURL.site + url), placeholderImage: placeholder)
+  func image(url: URL, placeholder: UIImage? = nil) {
+    sd_setImage(with: url, placeholderImage: placeholder)
   }
 }

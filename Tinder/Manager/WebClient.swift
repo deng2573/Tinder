@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import EVReflection
-import MobileCoreServices
+
 import FileKit
 
 let netErrorMsg = "网络加载失败,稍后再试...."
@@ -21,6 +21,7 @@ class WebClient: NSObject {
   static let shared = WebClient()
   
   var uploadRequests: [UploadRequest] = []
+  var uploadTasks: [URLSessionUploadTask] = []
   
   private static let manager: SessionManager = initManager()
   
@@ -109,33 +110,15 @@ class WebClient: NSObject {
   }
   
   public static func upload(files: [FileInfo], url: String, completion: @escaping (Int?) -> Void ) {
-//    for file in files {
-//      if let data = file.data {
-//        upload(data: data, url: url)
-//      }
-//      if let path = file.path, let fileUrl = URL(string: path) {
-//        upload(path: fileUrl, url: url)
-//      }
-//    }
-
     Alamofire.upload( multipartFormData: { multipartFormData in
       for file in files {
         if let data = file.data {
            multipartFormData.append(data, withName: "files[]", fileName: "\(file.name).\(file.fileExtension)", mimeType: file.fileExtension.mimeType)
         }
-//        NSFilemanage
         if let path = file.path {
-//          do {
-//            let data = try Data.read(from: Path(path))
-//            multipartFormData.append(data, withName: "files[]", fileName: "\(file.name).\(file.fileExtension)", mimeType: file.fileExtension.mimeType)
-//          } catch(let error) {
-//            print(error)
-//          }
-          
           let fileManager = FileManager.default
           let data = fileManager.contents(atPath: path)
           multipartFormData.append(data!, withName: "files[]", fileName: "\(file.name).\(file.fileExtension)", mimeType: file.fileExtension.mimeType)
-
         }
       }
     }, to: url, headers: [:], encodingCompletion: { encodingResult in
@@ -143,27 +126,7 @@ class WebClient: NSObject {
       case .success(let upload, _, _):
         WebClient.shared.uploadRequests.append(upload)
         NotificationCenter.default.post(name: .newUploadTask, object: upload)
-        completion(nil)
-//        upload.responseJSON { response in
-//          guard let result = response.result.value else {
-//            completion(nil)
-//            return
-//          }
-//          guard JSON(result)["status"].intValue == 1 else {
-//            completion(nil)
-//            return
-//          }
-//        }
-        //获取上传进度
-//        upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
-////          let progress = progress.fractionCompleted
-////          if progress >= 1 {
-////            WebClient.shared.uploadRequests.remove(at: <#T##Int#>)
-////          }
-////          print("文件上传进度: \(progress.fractionCompleted)")
-//        }
-      case .failure:
-        completion(nil)
+      case .failure: break
       }
     })
   }
@@ -196,37 +159,36 @@ class WebClient: NSObject {
   
 }
 
+//extension Array where Element: Equatable {
+//
+//  mutating func pw_remove(_ object: Element) -> Bool {
+//    if let index = firstIndex(of: object) {
+//      self.remove(at: index)
+//      return true
+//    }
+//
+//    return false
+//  }
+//
+//}
 
-class FileInfo: EVObject {
-  var name: String
-  var data: Data?
-  var fileExtension: String // 文件后缀
-  var path: String? // 文件本地路径
-  
-  init(name: String, data: Data? = nil, path: String? = nil, fileExtension: String) {
-    self.name = name
-    self.data = data
-    self.path = path
-    self.fileExtension = fileExtension
-  }
-  
-  required init() {
-    fatalError("init() has not been implemented")
-  }
-}
+//extension WebClient {
+//  func appendUploadRequest(upload: URLSessionUploadTask)  {
+//    uploadTasks.remove(at: uploadTasks.indebo)
+//  }
+//
+//  func removeUploadRequest(upload: URLSessionUploadTask)  {
+//
+//    upload.task
+//    
+//    WebClient.manager.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downTasks in
+//
+//    }
+//  }
+//}
 
 
-extension String {
-  var mimeType: String {
-    if let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
-                                                       self as NSString,
-                                                       nil)?.takeRetainedValue() {
-      if let mimetype = UTTypeCopyPreferredTagWithClass(uti, kUTTagClassMIMEType)?
-        .takeRetainedValue() {
-        return mimetype as String
-      }
-    }
-    //文件资源类型如果不知道，传万能类型application/octet-stream，服务器会自动解析文件类
-    return "application/octet-stream"
-  }
-}
+
+
+
+
