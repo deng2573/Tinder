@@ -8,8 +8,11 @@
 
 import UIKit
 import Alamofire
-//TransferViewController
-class TransferViewController: ViewController {
+import JXCategoryView
+
+class UploaderViewController: ViewController {
+  
+  var nav: UINavigationController?
   
   private lazy var tableView: UITableView = {
     let tableView = UITableView(frame: .zero, style: .grouped)
@@ -43,7 +46,7 @@ class TransferViewController: ViewController {
   }
 }
 
-extension TransferViewController: UITableViewDataSource {
+extension UploaderViewController: UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
@@ -60,7 +63,7 @@ extension TransferViewController: UITableViewDataSource {
   }
 }
 
-extension TransferViewController: UITableViewDelegate {
+extension UploaderViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 100
@@ -88,11 +91,11 @@ extension TransferViewController: UITableViewDelegate {
   
 }
 
-//extension TransferViewController: JXCategoryListContentViewDelegate {
-//  func listDidAppear() {
-//
-//  }
-//  func listView() -> UIView! {
-//    return view
-//  }
-//}
+extension UploaderViewController: JXCategoryListContentViewDelegate {
+  func listDidAppear() {
+
+  }
+  func listView() -> UIView! {
+    return view
+  }
+}
