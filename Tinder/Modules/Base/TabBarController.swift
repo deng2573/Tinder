@@ -26,6 +26,7 @@ class TabBarController: UITabBarController {
   func setupMainTabBar() {
     var viewControllers = [UIViewController]()
     viewControllers.append(NavigationController(rootViewController: HomeViewController()))
+    viewControllers.append(NavigationController(rootViewController: MyViewController()))
     
     itemTitles.append(.home)
     itemTitles.append(.my)

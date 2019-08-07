@@ -80,14 +80,16 @@ class FilePickerViewController: ViewController {
   }
   
   private func pushQRCodeGeneratorViewController() {
+    if self.files.isEmpty {
+      HUD.show(text: "请选择文件")
+      return
+    }
+    
     let vc = QRCodeRecognizerViewController()
     
     vc.scanSuccess = { value in
-      let vc = UploaderViewController()
+      let vc = UploaderViewController(files: self.files, url: value)
       self.navigationController?.pushViewController(vc, animated: true)
-      for file in self.files {
-        WebClient.upload(files: [file], url: value)
-      }
     }
     navigationController?.pushViewController(vc, animated: true)
   }

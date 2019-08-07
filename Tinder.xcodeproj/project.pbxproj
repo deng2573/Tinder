@@ -17,7 +17,6 @@
 		B411687822F192D4002008BE /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687722F192D4002008BE /* FileInfo.swift */; };
 		B411687A22F196C9002008BE /* FileTypesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687922F196C9002008BE /* FileTypesCell.swift */; };
 		B427F81E22F3D0A7006FEAD9 /* LocalFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427F81D22F3D0A7006FEAD9 /* LocalFileViewController.swift */; };
-		B43911B522F80AED0010BED5 /* TransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911B422F80AED0010BED5 /* TransferCell.swift */; };
 		B43911B722F838ED0010BED5 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911B622F838ED0010BED5 /* Notification.swift */; };
 		B43911CE22F9282D0010BED5 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911CD22F9282D0010BED5 /* TransferViewController.swift */; };
 		B43911D122F92B5C0010BED5 /* UIImageView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911CF22F92B5C0010BED5 /* UIImageView+Extensions.m */; };
@@ -27,6 +26,9 @@
 		B43911DC22F94AB20010BED5 /* VideoPalyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911D822F94AB20010BED5 /* VideoPalyerViewController.swift */; };
 		B43911DF22F957440010BED5 /* VideoPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911DE22F957440010BED5 /* VideoPlayerCell.swift */; };
 		B43911E122F959980010BED5 /* VideoPlayerCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911E022F959980010BED5 /* VideoPlayerCellData.swift */; };
+		B4502BE922FAE40D00396491 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BE822FAE40D00396491 /* MyViewController.swift */; };
+		B4502BEB22FAE44900396491 /* StaticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BEA22FAE44900396491 /* StaticTableViewCell.swift */; };
+		B4502BED22FAE47F00396491 /* MyNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BEC22FAE47F00396491 /* MyNormalTableViewCell.swift */; };
 		B45A4CDC22EEC6A400BBC94D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */; };
 		B45A4CE122EEC6A400BBC94D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CDF22EEC6A400BBC94D /* Main.storyboard */; };
 		B45A4CE322EEC6A600BBC94D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CE222EEC6A600BBC94D /* Assets.xcassets */; };
@@ -75,7 +77,6 @@
 		B411687922F196C9002008BE /* FileTypesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypesCell.swift; sourceTree = "<group>"; };
 		B427F81D22F3D0A7006FEAD9 /* LocalFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileViewController.swift; sourceTree = "<group>"; };
 		B427F81F22F402C3006FEAD9 /* Tinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tinder.entitlements; sourceTree = "<group>"; };
-		B43911B422F80AED0010BED5 /* TransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferCell.swift; sourceTree = "<group>"; };
 		B43911B622F838ED0010BED5 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B43911CD22F9282D0010BED5 /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
 		B43911CF22F92B5C0010BED5 /* UIImageView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Extensions.m"; sourceTree = "<group>"; };
@@ -87,6 +88,9 @@
 		B43911D822F94AB20010BED5 /* VideoPalyerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPalyerViewController.swift; sourceTree = "<group>"; };
 		B43911DE22F957440010BED5 /* VideoPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerCell.swift; sourceTree = "<group>"; };
 		B43911E022F959980010BED5 /* VideoPlayerCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerCellData.swift; sourceTree = "<group>"; };
+		B4502BE822FAE40D00396491 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		B4502BEA22FAE44900396491 /* StaticTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTableViewCell.swift; sourceTree = "<group>"; };
+		B4502BEC22FAE47F00396491 /* MyNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNormalTableViewCell.swift; sourceTree = "<group>"; };
 		B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tinder-Bridging-Header.h"; sourceTree = "<group>"; };
 		B45A4CD822EEC6A400BBC94D /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +169,16 @@
 			path = VideoPalyer;
 			sourceTree = "<group>";
 		};
+		B4502BE722FAE40100396491 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				B4502BE822FAE40D00396491 /* MyViewController.swift */,
+				B4502BEA22FAE44900396491 /* StaticTableViewCell.swift */,
+				B4502BEC22FAE47F00396491 /* MyNormalTableViewCell.swift */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
 		B45A4CCF22EEC6A400BBC94D = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +242,7 @@
 			children = (
 				B45A4D0122EED19900BBC94D /* Base */,
 				B45A4D1D22EED5E100BBC94D /* Home */,
+				B4502BE722FAE40100396491 /* My */,
 				B46F142B22F70A2F00B413D6 /* QRCode */,
 				B43911D522F94AB20010BED5 /* VideoPalyer */,
 			);
@@ -278,7 +293,6 @@
 				B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */,
 				B411687922F196C9002008BE /* FileTypesCell.swift */,
 				B411687522F18F66002008BE /* FileTypesView.swift */,
-				B43911B422F80AED0010BED5 /* TransferCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -441,13 +455,13 @@
 				B411687822F192D4002008BE /* FileInfo.swift in Sources */,
 				B45A4D0622EED19900BBC94D /* NavigationController.swift in Sources */,
 				B45A4D1C22EED1CB00BBC94D /* Color+Extensions.swift in Sources */,
-				B43911B522F80AED0010BED5 /* TransferCell.swift in Sources */,
 				B4F5449422F2F04700E07016 /* VCManager.swift in Sources */,
 				B45A4CFF22EED08000BBC94D /* HUD.swift in Sources */,
 				B43911DF22F957440010BED5 /* VideoPlayerCell.swift in Sources */,
 				B45A4CF922EED08000BBC94D /* Common.swift in Sources */,
 				B45A4D2722EEED6C00BBC94D /* FileInfoCell.swift in Sources */,
 				B411687022F1653A002008BE /* FilePickerViewController.swift in Sources */,
+				B4502BEB22FAE44900396491 /* StaticTableViewCell.swift in Sources */,
 				B4F5449222F2EAC600E07016 /* FileServer.swift in Sources */,
 				B45A4D2522EEEAEE00BBC94D /* UploaderViewController.swift in Sources */,
 				B411687422F18DB2002008BE /* UISearchBar+Extensions.swift in Sources */,
@@ -455,9 +469,11 @@
 				B411687A22F196C9002008BE /* FileTypesCell.swift in Sources */,
 				B45A4D1B22EED1CB00BBC94D /* TimeInterval+Extensions.swift in Sources */,
 				B45A4D0522EED19900BBC94D /* ViewController.swift in Sources */,
+				B4502BED22FAE47F00396491 /* MyNormalTableViewCell.swift in Sources */,
 				B45A4CFC22EED08000BBC94D /* App.swift in Sources */,
 				B45A4CFE22EED08000BBC94D /* WebClient.swift in Sources */,
 				B43911DA22F94AB20010BED5 /* PWVideoPalyerView.swift in Sources */,
+				B4502BE922FAE40D00396491 /* MyViewController.swift in Sources */,
 				B411686922F03B4A002008BE /* WebManager.swift in Sources */,
 				B411686E22F12DFC002008BE /* WebResult.swift in Sources */,
 				B45A4D1622EED1CB00BBC94D /* UIButton+Extensions.swift in Sources */,
@@ -629,6 +645,7 @@
 			baseConfigurationReference = 13B03715384816F8418A8AAA /* Pods-Tinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Tinder/Tinder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -652,6 +669,7 @@
 			baseConfigurationReference = 561375E8C54B84640CB56B95 /* Pods-Tinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Tinder/Tinder.entitlements;
 				CODE_SIGN_STYLE = Automatic;

@@ -84,7 +84,7 @@ class HomeViewController: ViewController {
   }
   
   private func setUpView() {
-    title = "星传"
+    title = "首页"
     view.addSubview(shareButton)
     shareButton.snp.makeConstraints({ (make) in
       make.centerX.equalToSuperview()

@@ -10,6 +10,7 @@ import UIKit
 import FileKit
 import TZImagePickerController
 import SwipeCellKit
+import Alamofire
 
 class FileInfoCell: SwipeTableViewCell {
 
@@ -60,6 +61,27 @@ class FileInfoCell: SwipeTableViewCell {
     return label
   }()
   
+  private lazy var transProgressView: UIProgressView = {
+    let progressview = UIProgressView(frame: .zero)
+    progressview.clipsToBounds = true
+    progressview.progressViewStyle = .bar
+    progressview.progressTintColor = #colorLiteral(red: 0.1019607843, green: 0.5490196078, blue: 0.8549019608, alpha: 1)
+    progressview.trackTintColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9176470588, alpha: 1)
+    progressview.layer.cornerRadius = 2
+    progressview.isHidden = true
+    return progressview
+  }()
+  
+  private lazy var tipsLable: UILabel = {
+    let label = UILabel()
+    label.text = "分享成功"
+    label.textColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+    label.numberOfLines = 0
+    label.isHidden = true
+    label.font = UIFont.boldSystemFont(ofSize: 14)
+    return label
+  }()
+  
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
@@ -92,15 +114,29 @@ class FileInfoCell: SwipeTableViewCell {
     
     contentView.addSubview(nameLabel)
     nameLabel.snp.makeConstraints({ (make) in
-      make.left.equalTo(coverImageView.snp.right).offset(8)
+      make.left.equalTo(coverImageView.snp.right).offset(20)
       make.right.equalTo(-32)
-      make.bottom.equalTo(coverImageView.snp.centerY).offset(-10)
+      make.top.equalTo(coverImageView).offset(5)
     })
     
     contentView.addSubview(sizeLable)
     sizeLable.snp.makeConstraints({ (make) in
       make.left.equalTo(nameLabel)
-      make.top.equalTo(coverImageView.snp.centerY).offset(10)
+      make.bottom.equalTo(coverImageView.snp.bottom).offset(-5)
+    })
+    
+    contentView.addSubview(transProgressView)
+    transProgressView.snp.makeConstraints({ (make) in
+      make.left.equalTo(nameLabel)
+      make.right.equalTo(-100)
+      make.bottom.equalTo(coverImageView.snp.bottom).offset(-5)
+      make.height.equalTo(5)
+    })
+    
+    contentView.addSubview(tipsLable)
+    tipsLable.snp.makeConstraints({ (make) in
+      make.right.equalTo(nameLabel)
+      make.centerY.equalTo(transProgressView)
     })
   }
   
@@ -166,6 +202,19 @@ class FileInfoCell: SwipeTableViewCell {
       if type == .video {
         coverImageView.image(withVideoURL: URL(fileURLWithPath: path), placeHolderImage: #imageLiteral(resourceName: "VEDIO"))
       }
+    }
+  }
+  
+  func update(upload: UploadRequest) {
+    transProgressView.isHidden = false
+    sizeLable.isHidden = true
+    tipsLable.isHidden = upload.progress.fractionCompleted != 1
+    transProgressView.setProgress(Float(upload.progress.fractionCompleted), animated: false)
+    upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
+      DispatchQueue.main.async(execute: {
+        self.tipsLable.isHidden = upload.progress.fractionCompleted != 1
+        self.transProgressView.setProgress(Float(progress.fractionCompleted), animated: false)
+      })
     }
   }
 }

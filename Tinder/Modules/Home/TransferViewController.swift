@@ -73,11 +73,11 @@ class TransferViewController: ViewController {
     categoryView.titles = titles
     categoryView.defaultSelectedIndex = defaultSelectedIndex
     pagingView.defaultSelectedIndex = defaultSelectedIndex
-    let uploaderVC = UploaderViewController()
-    uploaderVC.nav = navigationController
-    let localVC = LocalFileViewController()
-    localVC.nav = navigationController
-    vcList = [uploaderVC, localVC]
+//    let uploaderVC = UploaderViewController()
+//    uploaderVC.nav = navigationController
+//    let localVC = LocalFileViewController()
+//    localVC.nav = navigationController
+//    vcList = [uploaderVC, localVC]
     categoryView.reloadData()
     pagingView.reloadData()
   }

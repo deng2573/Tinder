@@ -20,23 +20,44 @@ class UploaderViewController: ViewController {
     tableView.separatorStyle = .none
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.register(cellType: TransferCell.self)
+    tableView.backgroundColor = view.backgroundColor
+    tableView.register(cellType: FileInfoCell.self)
     return tableView
   }()
 
+  private var files: [FileInfo] = []
+  private var url: String = ""
   private var uploadList: [UploadRequest] = []
   
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  init(files: [FileInfo], url: String) {
+    self.files = files
+    self.url = url
+    super.init(nibName: nil, bundle: nil)
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
+    uploadFiles()
     setUpView()
     obtainUploadRequests()
     registerNotification()
   }
   
   private func setUpView() {
+    title = "分享"
     view.addSubview(tableView)
     tableView.snp.makeConstraints { (make) in
       make.edges.equalToSuperview()
+    }
+  }
+  
+  private func uploadFiles() {
+    for file in self.files {
+      WebClient.upload(files: [file], url: self.url)
     }
   }
   
@@ -61,13 +82,17 @@ extension UploaderViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return uploadList.count
+    return files.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let upload = uploadList[indexPath.row]
-    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: TransferCell.self)
-    cell.update(upload: upload)
+    let file = files[indexPath.row]
+    let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileInfoCell.self)
+    cell.update(file: file)
+    if uploadList.count - 1 >= indexPath.row {
+      let upload = uploadList[indexPath.row]
+      cell.update(upload: upload)
+    }
     return cell
   }
 }
@@ -75,7 +100,7 @@ extension UploaderViewController: UITableViewDataSource {
 extension UploaderViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100
+    return 120
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

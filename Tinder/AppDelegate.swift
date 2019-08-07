@@ -26,6 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
   private func setUpMainViewController() {
     // 解析本地数据
-    window?.rootViewController = NavigationController(rootViewController: HomeViewController())
+    window?.rootViewController = TabBarController()
   }
 }
