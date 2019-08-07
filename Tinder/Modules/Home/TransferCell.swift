@@ -72,11 +72,10 @@ class TransferCell: UITableViewCell {
   
   func update(upload: UploadRequest) {
     nameLabel.text = "文件"
+    transProgressView.setProgress(Float(upload.progress.fractionCompleted), animated: false)
     upload.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
       DispatchQueue.main.async(execute: {
-        print("文件上传进度: \(progress.fractionCompleted)")
-        print("当前网速\(NetSpeed.getByteRate())")
-        self.transProgressView.setProgress(Float(progress.fractionCompleted), animated: true)
+        self.transProgressView.setProgress(Float(progress.fractionCompleted), animated: false)
       })
     }
   }

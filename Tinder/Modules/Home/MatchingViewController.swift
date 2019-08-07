@@ -79,8 +79,7 @@ extension MatchingViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let device = devices[indexPath.row]
     let a = PingOperation.init(ipToPing: device.ipAddress) { (error, string) in
-      print(error)
-      print(string)
+
     }
     a?.start()
   }

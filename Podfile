@@ -51,4 +51,6 @@ target 'Tinder' do
   pod 'UICircularProgressRing'
   # tableView 删除
   pod 'SwipeCellKit'
+  
+#  pod 'CocoaAsyncSocket' 
 end

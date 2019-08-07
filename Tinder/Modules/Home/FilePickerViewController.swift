@@ -13,7 +13,7 @@ class FilePickerViewController: ViewController {
   
   private lazy var tableView: UITableView = {
     let tableView = UITableView(frame: .zero, style: .grouped)
-    tableView.backgroundColor = .white
+    tableView.backgroundColor = view.backgroundColor
     tableView.separatorStyle = .none
     tableView.dataSource = self
     tableView.delegate = self
@@ -66,6 +66,7 @@ class FilePickerViewController: ViewController {
   }
   
   private func setUpView() {
+    title = "我要分享"
     view.addSubview(tableView)
     tableView.snp.makeConstraints { (make) in
       make.edges.equalToSuperview()
@@ -80,11 +81,13 @@ class FilePickerViewController: ViewController {
   
   private func pushQRCodeGeneratorViewController() {
     let vc = QRCodeRecognizerViewController()
+    
     vc.scanSuccess = { value in
-      WebClient.upload(files: self.files, url: value, completion: { status in
-        let vc = UploaderViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-      })
+      let vc = UploaderViewController()
+      self.navigationController?.pushViewController(vc, animated: true)
+      for file in self.files {
+        WebClient.upload(files: [file], url: value)
+      }
     }
     navigationController?.pushViewController(vc, animated: true)
   }
@@ -173,7 +176,7 @@ extension FilePickerViewController: SwipeTableViewCellDelegate {
         fileServer.removeFile(info: file)
       }
       delete.image = #imageLiteral(resourceName:"Trash")
-      delete.backgroundColor = .white
+      delete.backgroundColor = UIColor.themeBackgroundColor
       return [delete]
     }
     return nil

@@ -31,6 +31,7 @@ class QRCodeGeneratorViewController: ViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+    title = "我要接收"
     view.addSubview(QRImageView)
     QRImageView.snp.makeConstraints({ (make) in
       make.center.equalToSuperview()

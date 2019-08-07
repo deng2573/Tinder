@@ -29,9 +29,9 @@ enum FilePath {
 enum AppKey {
   // 高德地图apiKey
   struct ALiPay {
-    static let appId = "201712310809"
+    static let appId = ""
   }
   struct WeChatPay {
-    static let appId = "wxb83a5356c64aa96a"
+    static let appId = ""
   }
 }

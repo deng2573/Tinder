@@ -9,13 +9,9 @@
 import UIKit
 
 extension UIColor {
-  static let themeColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+  static let themeColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
   static let titleColor = #colorLiteral(red: 0.2862745098, green: 0.2784313725, blue: 0.3215686275, alpha: 1)
-  static let themeBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-}
-// 主页
-extension UIColor {
-  static let homeBackgroundColor = #colorLiteral(red: 0.2862745098, green: 0.2784313725, blue: 0.3215686275, alpha: 1)
+  static let themeBackgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
 }
 
 extension UIImage {

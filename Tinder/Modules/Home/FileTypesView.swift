@@ -21,7 +21,7 @@ class FileTypesView: UIView {
     layout.minimumLineSpacing = 10
     layout.minimumInteritemSpacing = 20
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collectionView.backgroundColor = .white
+    collectionView.backgroundColor = UIColor.themeBackgroundColor
     collectionView.showsVerticalScrollIndicator = false
     collectionView.showsHorizontalScrollIndicator = false
     collectionView.isScrollEnabled = false

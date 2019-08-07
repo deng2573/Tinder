@@ -100,16 +100,7 @@ class WebClient: NSObject {
     NotificationCenter.default.post(name: .newUploadTask, object: uploadRequest)
   }
   
-  public static func upload(file: FileInfo, url: String) {
-    if let data = file.data {
-      upload(data: data, url: url)
-    }
-    if let path = file.path {
-      upload(path: URL(fileURLWithPath: path), url: url)
-    }
-  }
-  
-  public static func upload(files: [FileInfo], url: String, completion: @escaping (Int?) -> Void ) {
+  public static func upload(files: [FileInfo], url: String) {
     Alamofire.upload( multipartFormData: { multipartFormData in
       for file in files {
         if let data = file.data {
@@ -130,65 +121,4 @@ class WebClient: NSObject {
       }
     })
   }
-  
-  public static func download(url: String, completion: @escaping (Int?) -> Void ) {
-    let url = "http://192.168.1.143:80/download?path=/file.JPG"
-//    let parameters = ["path": "/file.JPG"]
-    Alamofire.download(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil) { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
-      let manager = FileManager.default
-      let urlForDocument = manager.urls(for: .documentDirectory, in:.userDomainMask)
-      let url = urlForDocument[0] as URL
-      let folder = url.appendingPathComponent("WebDownload", isDirectory: true)
-      
-      return (URL(fileURLWithPath: folder.path + "/991.JPG"), [.createIntermediateDirectories, .removePreviousFile])
-      }.responseJSON { (response) in
-        
-        switch response.result {
-          
-        case .success:
-          print("success")
-        case .failure: break
-          //意外中断后在此处处理下载完成的部分
-//         let tmpData = response.resumeData
-//          Alamofire.download(resumingWith: tmpData!)
-        }
-        
-    }
-    
-  }
-  
 }
-
-//extension Array where Element: Equatable {
-//
-//  mutating func pw_remove(_ object: Element) -> Bool {
-//    if let index = firstIndex(of: object) {
-//      self.remove(at: index)
-//      return true
-//    }
-//
-//    return false
-//  }
-//
-//}
-
-//extension WebClient {
-//  func appendUploadRequest(upload: URLSessionUploadTask)  {
-//    uploadTasks.remove(at: uploadTasks.indebo)
-//  }
-//
-//  func removeUploadRequest(upload: URLSessionUploadTask)  {
-//
-//    upload.task
-//    
-//    WebClient.manager.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downTasks in
-//
-//    }
-//  }
-//}
-
-
-
-
-
-

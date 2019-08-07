@@ -41,7 +41,6 @@ class WebServer: NSObject {
   
   func start() {
     addMatchingHandler()
-    addUploadHandler()
     addDownloadHandler()
 		uploader.start()
     print(uploader.port)
@@ -55,14 +54,6 @@ extension WebServer {
       let contentType = "application/json"
       let result = WebResult(status: 200, msg: "设备匹配成功")
       let response = GCDWebServerDataResponse.init(jsonObject: result.toDictionary(), contentType: contentType)
-      completionBlock(response)
-    }
-  }
-  
-  func addUploadHandler() {
-    uploader.addHandler(forMethod: "POST", path: "/uploadFiles", request: GCDWebServerFileRequest.self) { (request, completionBlock) in
-      let contentType = "application/json"
-      let response = GCDWebServerDataResponse.init(jsonObject: ["status": "1"], contentType: contentType)
       completionBlock(response)
     }
   }

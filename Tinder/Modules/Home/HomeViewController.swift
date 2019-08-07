@@ -16,26 +16,48 @@ class HomeViewController: ViewController {
 
   private lazy var shareButton: UIButton = {
     let button = UIButton(type: .custom)
-    button.setTitle("我要分享", for: .normal)
-    button.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6196078431, blue: 1, alpha: 1)
-    button.layer.cornerRadius = 22
-    button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+    button.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+    button.layer.cornerRadius = screenWidth * 0.4 / 2
+    button.setImage(#imageLiteral(resourceName: "home_up"), for: .normal)
     button.tap(action: { _ in
       self.pushFilePickerViewController()
     })
     return button
   }()
   
+  private lazy var shareLabel: UILabel = {
+    let label = UILabel()
+    label.text = "我要分享"
+    label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    label.clipsToBounds = true
+    label.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+    label.textAlignment = .center
+    label.layer.cornerRadius = 5
+    label.font = UIFont.boldSystemFont(ofSize: 16)
+    return label
+  }()
+  
   private lazy var receiveButton: UIButton = {
     let button = UIButton(type: .custom)
-    button.setTitle("我要接收", for: .normal)
-    button.backgroundColor = #colorLiteral(red: 0.07843137255, green: 0.6196078431, blue: 1, alpha: 1)
-    button.layer.cornerRadius = 22
-    button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+    button.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+    button.layer.cornerRadius = screenWidth * 0.4 / 2
+    button.setImage(#imageLiteral(resourceName: "home_down"), for: .normal)
     button.tap(action: { _ in
       self.pushQRCodeGeneratorController()
     })
     return button
+  }()
+  
+  private lazy var receiveLabel: UILabel = {
+    let label = UILabel()
+    label.text = "我要接收"
+    label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    label.font = UIFont.boldSystemFont(ofSize: 16)
+    label.clipsToBounds = true
+    label.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+    label.layer.cornerRadius = 5
+    label.textAlignment = .center
+    return label
   }()
   
   private lazy var progressRing: UICircularProgressRing = {
@@ -59,29 +81,36 @@ class HomeViewController: ViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpView()
-    registerNotification()
   }
   
   private func setUpView() {
+    title = "星传"
     view.addSubview(shareButton)
     shareButton.snp.makeConstraints({ (make) in
-      make.left.right.equalTo(view)
-      make.top.equalTo(300)
-      make.height.equalTo(44)
+      make.centerX.equalToSuperview()
+      make.bottom.equalTo(view.snp.centerY).offset(-60)
+      make.size.equalTo(CGSize(width: screenWidth * 0.4, height: screenWidth * 0.4))
     })
     
     view.addSubview(receiveButton)
     receiveButton.snp.makeConstraints({ (make) in
-      make.left.right.equalTo(view)
-      make.top.equalTo(400)
-      make.height.equalTo(44)
+      make.centerX.equalTo(shareButton)
+      make.top.equalTo(view.snp.centerY).offset(10)
+      make.size.equalTo(shareButton)
     })
     
-    view.addSubview(progressRing)
-    progressRing.snp.makeConstraints({ (make) in
-      make.size.equalTo(CGSize(width: screenWidth * 0.3, height: screenWidth * 0.3))
-      make.centerX.equalToSuperview()
-      make.top.equalTo(20)
+    view.addSubview(shareLabel)
+    shareLabel.snp.makeConstraints({ (make) in
+      make.centerX.equalTo(shareButton)
+      make.top.equalTo(shareButton.snp.bottom).offset(10)
+      make.size.equalTo(CGSize(width: 100, height: 25))
+    })
+    
+    view.addSubview(receiveLabel)
+    receiveLabel.snp.makeConstraints({ (make) in
+      make.centerX.equalTo(shareButton)
+      make.top.equalTo(receiveButton.snp.bottom).offset(10)
+      make.size.equalTo(shareLabel)
     })
     
     let localFileButton = UIButton(type: .custom)
@@ -89,29 +118,13 @@ class HomeViewController: ViewController {
     localFileButton.setTitle("传输列表", for: .normal)
     localFileButton.setTitleColor(.darkGray, for: .normal)
     localFileButton.layer.cornerRadius = 22
-    localFileButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+    localFileButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
     localFileButton.tap(action: { _ in
       self.pushTransferViewController()
     })
     
     let item = UIBarButtonItem(customView: localFileButton)
     navigationItem.rightBarButtonItem = item
-  }
-  
-  private func registerNotification() {
-    NotificationCenter.default.addObserver(self, selector: #selector(newWebTask(notification:)), name: .newUploadTask, object: nil)
-  }
-  
-  @objc func newWebTask(notification: Notification) {
-    let uploadRequest = WebClient.shared.uploadRequests.first!
-    uploadRequest.uploadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
-      DispatchQueue.main.async(execute: {
-        print("文件上传进度: \(progress.fractionCompleted)")
-        print("当前网速\(NetSpeed.getByteRate())")
-        self.progressRing.value = CGFloat(progress.fractionCompleted)
-      })
-    }
-    
   }
   
   private func pushFilePickerViewController() {
@@ -130,7 +143,11 @@ class HomeViewController: ViewController {
   }
   
   private func pushTransferViewController() {
-    let vc = TransferViewController()
+    let vc = LocalFileViewController()
     navigationController?.pushViewController(vc, animated: true)
+  }
+  
+  private func upload() {
+    WebClient.upload(path: URL(fileURLWithPath: "/var/mobile/Containers/Data/Application/F33284FD-52BB-436D-B153-49FE27CA9560/Documents/WebUpload/1.png"), url: "http://192.168.1.143:80/uploadFiles")
   }
 }

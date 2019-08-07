@@ -30,6 +30,7 @@ class UploaderViewController: ViewController {
     super.viewDidLoad()
     setUpView()
     obtainUploadRequests()
+    registerNotification()
   }
   
   private func setUpView() {
@@ -43,6 +44,14 @@ class UploaderViewController: ViewController {
     let uploads = WebClient.shared.uploadRequests
     uploadList = uploads
     tableView.reloadData()
+  }
+  
+  private func registerNotification() {
+    NotificationCenter.default.addObserver(self, selector: #selector(newWebTask(notification:)), name: .newUploadTask, object: nil)
+  }
+  
+  @objc func newWebTask(notification: Notification) {
+    self.obtainUploadRequests()
   }
 }
 

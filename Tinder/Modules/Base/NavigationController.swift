@@ -18,7 +18,7 @@ class NavigationController: UINavigationController {
   func setUpView() {
     view.backgroundColor = .white
     navigationBar.isTranslucent = false
-    navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleColor, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: .regular)]
+    navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.titleColor, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
     navigationBar.barTintColor = UIColor.themeColor
   }
   

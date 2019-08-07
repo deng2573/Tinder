@@ -10,7 +10,7 @@ import UIKit
 import JXPagingView
 import JXCategoryView
 
-class TransferViewController: UIViewController {
+class TransferViewController: ViewController {
   private var pagingView: JXCategoryListContainerView!
   private var categoryView: JXCategoryTitleView!
   private var vcList = [JXCategoryListContentViewDelegate]()

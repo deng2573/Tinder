@@ -12,7 +12,6 @@
 		B411686B22F04F13002008BE /* MatchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411686A22F04F13002008BE /* MatchingViewController.swift */; };
 		B411686E22F12DFC002008BE /* WebResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411686D22F12DFC002008BE /* WebResult.swift */; };
 		B411687022F1653A002008BE /* FilePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411686F22F1653A002008BE /* FilePickerViewController.swift */; };
-		B411687222F16974002008BE /* FileSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687122F16974002008BE /* FileSearchController.swift */; };
 		B411687422F18DB2002008BE /* UISearchBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687322F18DB2002008BE /* UISearchBar+Extensions.swift */; };
 		B411687622F18F66002008BE /* FileTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687522F18F66002008BE /* FileTypesView.swift */; };
 		B411687822F192D4002008BE /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B411687722F192D4002008BE /* FileInfo.swift */; };
@@ -20,12 +19,6 @@
 		B427F81E22F3D0A7006FEAD9 /* LocalFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427F81D22F3D0A7006FEAD9 /* LocalFileViewController.swift */; };
 		B43911B522F80AED0010BED5 /* TransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911B422F80AED0010BED5 /* TransferCell.swift */; };
 		B43911B722F838ED0010BED5 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911B622F838ED0010BED5 /* Notification.swift */; };
-		B43911C222F8411C0010BED5 /* QBTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911BB22F8411C0010BED5 /* QBTools.m */; };
-		B43911C322F8411C0010BED5 /* NetworkSpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911BC22F8411C0010BED5 /* NetworkSpeedViewController.m */; };
-		B43911C422F8411C0010BED5 /* ClockDialView.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911BD22F8411C0010BED5 /* ClockDialView.m */; };
-		B43911C522F8411C0010BED5 /* NetworkSpeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B43911BE22F8411C0010BED5 /* NetworkSpeedViewController.xib */; };
-		B43911C622F8411C0010BED5 /* MeasurNetTools.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911BF22F8411C0010BED5 /* MeasurNetTools.m */; };
-		B43911C922F842EE0010BED5 /* NetSpeed.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911C822F842EE0010BED5 /* NetSpeed.m */; };
 		B43911CE22F9282D0010BED5 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911CD22F9282D0010BED5 /* TransferViewController.swift */; };
 		B43911D122F92B5C0010BED5 /* UIImageView+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911CF22F92B5C0010BED5 /* UIImageView+Extensions.m */; };
 		B43911D422F92BFC0010BED5 /* NSData+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = B43911D322F92BFC0010BED5 /* NSData+Extensions.m */; };
@@ -34,8 +27,6 @@
 		B43911DC22F94AB20010BED5 /* VideoPalyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911D822F94AB20010BED5 /* VideoPalyerViewController.swift */; };
 		B43911DF22F957440010BED5 /* VideoPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911DE22F957440010BED5 /* VideoPlayerCell.swift */; };
 		B43911E122F959980010BED5 /* VideoPlayerCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43911E022F959980010BED5 /* VideoPlayerCellData.swift */; };
-		B450D60C22F4716C00A82BF6 /* TinderWebServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B450D60B22F4716C00A82BF6 /* TinderWebServer.swift */; };
-		B450D61222F4763800A82BF6 /* TinderServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B450D61122F4763800A82BF6 /* TinderServer.m */; };
 		B45A4CDC22EEC6A400BBC94D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */; };
 		B45A4CE122EEC6A400BBC94D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CDF22EEC6A400BBC94D /* Main.storyboard */; };
 		B45A4CE322EEC6A600BBC94D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CE222EEC6A600BBC94D /* Assets.xcassets */; };
@@ -78,7 +69,6 @@
 		B411686A22F04F13002008BE /* MatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingViewController.swift; sourceTree = "<group>"; };
 		B411686D22F12DFC002008BE /* WebResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebResult.swift; sourceTree = "<group>"; };
 		B411686F22F1653A002008BE /* FilePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePickerViewController.swift; sourceTree = "<group>"; };
-		B411687122F16974002008BE /* FileSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSearchController.swift; sourceTree = "<group>"; };
 		B411687322F18DB2002008BE /* UISearchBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Extensions.swift"; sourceTree = "<group>"; };
 		B411687522F18F66002008BE /* FileTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileTypesView.swift; sourceTree = "<group>"; };
 		B411687722F192D4002008BE /* FileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfo.swift; sourceTree = "<group>"; };
@@ -87,17 +77,6 @@
 		B427F81F22F402C3006FEAD9 /* Tinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tinder.entitlements; sourceTree = "<group>"; };
 		B43911B422F80AED0010BED5 /* TransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferCell.swift; sourceTree = "<group>"; };
 		B43911B622F838ED0010BED5 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
-		B43911B922F8411C0010BED5 /* ClockDialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockDialView.h; sourceTree = "<group>"; };
-		B43911BA22F8411C0010BED5 /* MeasurNetTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeasurNetTools.h; sourceTree = "<group>"; };
-		B43911BB22F8411C0010BED5 /* QBTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBTools.m; sourceTree = "<group>"; };
-		B43911BC22F8411C0010BED5 /* NetworkSpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkSpeedViewController.m; sourceTree = "<group>"; };
-		B43911BD22F8411C0010BED5 /* ClockDialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockDialView.m; sourceTree = "<group>"; };
-		B43911BE22F8411C0010BED5 /* NetworkSpeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkSpeedViewController.xib; sourceTree = "<group>"; };
-		B43911BF22F8411C0010BED5 /* MeasurNetTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeasurNetTools.m; sourceTree = "<group>"; };
-		B43911C022F8411C0010BED5 /* NetworkSpeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkSpeedViewController.h; sourceTree = "<group>"; };
-		B43911C122F8411C0010BED5 /* QBTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBTools.h; sourceTree = "<group>"; };
-		B43911C722F842EE0010BED5 /* NetSpeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetSpeed.h; sourceTree = "<group>"; };
-		B43911C822F842EE0010BED5 /* NetSpeed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetSpeed.m; sourceTree = "<group>"; };
 		B43911CD22F9282D0010BED5 /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
 		B43911CF22F92B5C0010BED5 /* UIImageView+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Extensions.m"; sourceTree = "<group>"; };
 		B43911D022F92B5C0010BED5 /* UIImageView+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Extensions.h"; sourceTree = "<group>"; };
@@ -108,10 +87,7 @@
 		B43911D822F94AB20010BED5 /* VideoPalyerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPalyerViewController.swift; sourceTree = "<group>"; };
 		B43911DE22F957440010BED5 /* VideoPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerCell.swift; sourceTree = "<group>"; };
 		B43911E022F959980010BED5 /* VideoPlayerCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerCellData.swift; sourceTree = "<group>"; };
-		B450D60B22F4716C00A82BF6 /* TinderWebServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderWebServer.swift; sourceTree = "<group>"; };
 		B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tinder-Bridging-Header.h"; sourceTree = "<group>"; };
-		B450D61022F4763800A82BF6 /* TinderServer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinderServer.h; sourceTree = "<group>"; };
-		B450D61122F4763800A82BF6 /* TinderServer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TinderServer.m; sourceTree = "<group>"; };
 		B45A4CD822EEC6A400BBC94D /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B45A4CE022EEC6A400BBC94D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -175,22 +151,6 @@
 				B411687722F192D4002008BE /* FileInfo.swift */,
 			);
 			path = Infos;
-			sourceTree = "<group>";
-		};
-		B43911B822F8411C0010BED5 /* NetworkSpeed */ = {
-			isa = PBXGroup;
-			children = (
-				B43911B922F8411C0010BED5 /* ClockDialView.h */,
-				B43911BA22F8411C0010BED5 /* MeasurNetTools.h */,
-				B43911BB22F8411C0010BED5 /* QBTools.m */,
-				B43911BC22F8411C0010BED5 /* NetworkSpeedViewController.m */,
-				B43911BD22F8411C0010BED5 /* ClockDialView.m */,
-				B43911BE22F8411C0010BED5 /* NetworkSpeedViewController.xib */,
-				B43911BF22F8411C0010BED5 /* MeasurNetTools.m */,
-				B43911C022F8411C0010BED5 /* NetworkSpeedViewController.h */,
-				B43911C122F8411C0010BED5 /* QBTools.h */,
-			);
-			path = NetworkSpeed;
 			sourceTree = "<group>";
 		};
 		B43911D522F94AB20010BED5 /* VideoPalyer */ = {
@@ -315,7 +275,6 @@
 				B411686A22F04F13002008BE /* MatchingViewController.swift */,
 				B43911CD22F9282D0010BED5 /* TransferViewController.swift */,
 				B411686F22F1653A002008BE /* FilePickerViewController.swift */,
-				B411687122F16974002008BE /* FileSearchController.swift */,
 				B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */,
 				B411687922F196C9002008BE /* FileTypesCell.swift */,
 				B411687522F18F66002008BE /* FileTypesView.swift */,
@@ -327,18 +286,12 @@
 		B45A4D2122EEDBC700BBC94D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				B43911B822F8411C0010BED5 /* NetworkSpeed */,
 				B45A4D2222EEDC6A00BBC94D /* WebServer.swift */,
-				B450D60B22F4716C00A82BF6 /* TinderWebServer.swift */,
-				B450D61022F4763800A82BF6 /* TinderServer.h */,
-				B450D61122F4763800A82BF6 /* TinderServer.m */,
 				B45A4CF622EED08000BBC94D /* WebClient.swift */,
 				B411686822F03B4A002008BE /* WebManager.swift */,
 				B4F5449122F2EAC600E07016 /* FileServer.swift */,
 				B4F5449322F2F04700E07016 /* VCManager.swift */,
 				B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */,
-				B43911C722F842EE0010BED5 /* NetSpeed.h */,
-				B43911C822F842EE0010BED5 /* NetSpeed.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -428,7 +381,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B45A4CE622EEC6A600BBC94D /* LaunchScreen.storyboard in Resources */,
-				B43911C522F8411C0010BED5 /* NetworkSpeedViewController.xib in Resources */,
 				B45A4CE322EEC6A600BBC94D /* Assets.xcassets in Resources */,
 				B45A4CE122EEC6A400BBC94D /* Main.storyboard in Resources */,
 			);
@@ -486,7 +438,6 @@
 				B45A4D1422EED1CB00BBC94D /* UIImageView+Extensions.swift in Sources */,
 				B45A4CFA22EED08000BBC94D /* NetURL.swift in Sources */,
 				B45A4D0722EED19900BBC94D /* TabBarController.swift in Sources */,
-				B43911C422F8411C0010BED5 /* ClockDialView.m in Sources */,
 				B411687822F192D4002008BE /* FileInfo.swift in Sources */,
 				B45A4D0622EED19900BBC94D /* NavigationController.swift in Sources */,
 				B45A4D1C22EED1CB00BBC94D /* Color+Extensions.swift in Sources */,
@@ -505,15 +456,11 @@
 				B45A4D1B22EED1CB00BBC94D /* TimeInterval+Extensions.swift in Sources */,
 				B45A4D0522EED19900BBC94D /* ViewController.swift in Sources */,
 				B45A4CFC22EED08000BBC94D /* App.swift in Sources */,
-				B43911C222F8411C0010BED5 /* QBTools.m in Sources */,
-				B450D60C22F4716C00A82BF6 /* TinderWebServer.swift in Sources */,
 				B45A4CFE22EED08000BBC94D /* WebClient.swift in Sources */,
 				B43911DA22F94AB20010BED5 /* PWVideoPalyerView.swift in Sources */,
 				B411686922F03B4A002008BE /* WebManager.swift in Sources */,
 				B411686E22F12DFC002008BE /* WebResult.swift in Sources */,
-				B411687222F16974002008BE /* FileSearchController.swift in Sources */,
 				B45A4D1622EED1CB00BBC94D /* UIButton+Extensions.swift in Sources */,
-				B450D61222F4763800A82BF6 /* TinderServer.m in Sources */,
 				B45A4D1722EED1CB00BBC94D /* UIView+Extensions.swift in Sources */,
 				B43911D422F92BFC0010BED5 /* NSData+Extensions.m in Sources */,
 				B43911DC22F94AB20010BED5 /* VideoPalyerViewController.swift in Sources */,
@@ -531,12 +478,9 @@
 				B43911DB22F94AB20010BED5 /* PWPlayerControlView.swift in Sources */,
 				B45A4D1322EED1CB00BBC94D /* Int+Extensions.swift in Sources */,
 				B46F142D22F70AA300B413D6 /* QRCodeRecognizerViewController.swift in Sources */,
-				B43911C622F8411C0010BED5 /* MeasurNetTools.m in Sources */,
 				B45A4CFB22EED08000BBC94D /* Color.swift in Sources */,
 				B43911CE22F9282D0010BED5 /* TransferViewController.swift in Sources */,
-				B43911C322F8411C0010BED5 /* NetworkSpeedViewController.m in Sources */,
 				B411687622F18F66002008BE /* FileTypesView.swift in Sources */,
-				B43911C922F842EE0010BED5 /* NetSpeed.m in Sources */,
 				B45A4CFD22EED08000BBC94D /* Refresh.swift in Sources */,
 				B43911B722F838ED0010BED5 /* Notification.swift in Sources */,
 			);

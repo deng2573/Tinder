@@ -10,8 +10,6 @@ import UIKit
 
 enum TabTitle: String {
   case home = "首页"
-  case shopping = "商城"
-  case news = "乐闻"
   case my   = "我的"
 }
 
@@ -30,13 +28,9 @@ class TabBarController: UITabBarController {
     viewControllers.append(NavigationController(rootViewController: HomeViewController()))
     
     itemTitles.append(.home)
-    itemTitles.append(.shopping)
-    itemTitles.append(.news)
     itemTitles.append(.my)
     
     itemImages.append("tab_home")
-    itemImages.append("tab_shopping")
-    itemImages.append("tab_news")
     itemImages.append("tab_my")
     
     let itemSelectedImages = itemImages.map({title in
