@@ -19,10 +19,6 @@ class WebServer: NSObject {
     let uploader = GCDWebUploader(uploadDirectory: uploadPath)
     uploader.delegate = self
     uploader.allowHiddenItems = true
-//    uploader.addGETHandler(forBasePath: "/", directoryPath: uploadPath, indexFilename: nil, cacheAge: 3600, allowRangeRequests: false)
-//    uploader.addHandler(forMethod: "GET", path: "/", request: GCDWebServerRequest.self) { request -> GCDWebServerResponse? in
-//      return GCDWebServerDataResponse(htmlTemplate: Bundle.main.path(forResource: "index", ofType: "html")!, variables: [:])
-//    }
     return uploader
   }()
 

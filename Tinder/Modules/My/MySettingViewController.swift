@@ -1,14 +1,14 @@
 //
-//  MyViewController.swift
-//  LeMotion
+//  MySettingViewController.swift
+//  Tinder
 //
-//  Created by Deng on 2019/4/3.
+//  Created by Deng on 2019/8/8.
 //  Copyright © 2019 Deng. All rights reserved.
 //
 
 import UIKit
 
-class MyViewController: ViewController {
+class MySettingViewController: ViewController {
   
   private lazy var tableView: UITableView = {
     let tableView = UITableView(frame: .zero, style: .grouped)
@@ -23,13 +23,8 @@ class MyViewController: ViewController {
     loadCellData()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    tableView.reloadData()
-  }
-  
   func setUpView() {
-    title = "我的"
+    title = "设置"
     view.addSubview(tableView)
     tableView.backgroundColor = view.backgroundColor
     tableView.snp.makeConstraints { (make) in
@@ -38,26 +33,13 @@ class MyViewController: ViewController {
     tableView.separatorStyle = .none
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.register(cellType: MyHeaderTableViewCell.self)
     tableView.register(cellType: MyNormalTableViewCell.self)
   }
   
   func loadCellData() {
     cellList = [
       [
-        StaticTableViewCell(cellType: MyHeaderTableViewCell.self, didSelectPushTo: UpdateUserInfoViewController()),
-      ],
-      [
-        StaticTableViewCell(cellType: MyNormalTableViewCell.self, title: "本地文件", icon: UIImage(), didSelectPushTo: LocalFileViewController()),
-      ],
-      [
-        StaticTableViewCell(cellType: MyNormalTableViewCell.self, title: "意见反馈", icon: UIImage(), didSelectPushTo: FeedbackViewController()),
-      ],
-      [
-        StaticTableViewCell(cellType: MyNormalTableViewCell.self, title: "关于我们", icon: UIImage(), didSelectPushTo: AboutAppViewController()),
-      ],
-      [
-        StaticTableViewCell(cellType: MyNormalTableViewCell.self, title: "设置", icon: UIImage(), didSelectPushTo: MySettingViewController()),
+        StaticTableViewCell(cellType: MyNormalTableViewCell.self, title: "清除缓存", icon: UIImage(), didSelectPushTo: ViewController()),
       ]
     ]
     tableView.reloadData()
@@ -65,7 +47,7 @@ class MyViewController: ViewController {
   
 }
 
-extension MyViewController:  UITableViewDataSource {
+extension MySettingViewController:  UITableViewDataSource {
   func numberOfSections(in tableView: UITableView) -> Int {
     return cellList.count
   }
@@ -76,13 +58,7 @@ extension MyViewController:  UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let item = self.cellList[indexPath.section][indexPath.row]
-    
     let cell = tableView.dequeueReusableCell(for: indexPath, cellType: item.cellType)
-    
-    if let cell  = cell as? MyHeaderTableViewCell {
-      cell.update()
-    }
-    
     if let cell  = cell as? MyNormalTableViewCell {
       cell.update(title: item.title)
     }
@@ -90,20 +66,18 @@ extension MyViewController:  UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    let item = self.cellList[indexPath.section][indexPath.row]
-    if item.cellType == MyHeaderTableViewCell.self {
-      return 120
-    }
     return 60
   }
   
 }
 
-extension MyViewController: UITableViewDelegate {
+extension MySettingViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let item = self.cellList[indexPath.section][indexPath.row]
-    navigationController?.pushViewController(item.didSelectPushTo, animated: true)
+    HUD.loading()
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      HUD.show(text: "清除成功")
+    }
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -115,14 +89,11 @@ extension MyViewController: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    if section == 0 {
-      return 0.1
-    }
-    return 16
+    return 0.1
   }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 0.1
+    return 2
   }
   
 }

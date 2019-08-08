@@ -28,7 +28,7 @@ class HUD {
     container.addSubview(hud)
     allHUD.append(hud)
     hud.show(animated: true)
-    hud.hide(animated: true, afterDelay: 2)
+    hud.hide(animated: true, afterDelay: 3)
   }
   
   static func loading(view: UIView? = nil) {

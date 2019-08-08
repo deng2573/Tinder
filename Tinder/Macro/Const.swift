@@ -1,28 +1,29 @@
 //
-//  Common.swift
-//  LeMotion
+//  Const.swift
+//  Tinder
 //
-//  Created by Deng on 2019/3/31.
+//  Created by Deng on 2019/8/8.
 //  Copyright © 2019 Deng. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-// 屏幕适应
+@_exported import Alamofire
+@_exported import UITableView_FDTemplateLayoutCell
+
+
 let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.height
 let statusBarHeight = UIApplication.shared.statusBarFrame.height
 let navigationHeight = statusBarHeight + CGFloat(44)
 let isComprehensiveScreen = navigationHeight == 88
 
-var version: String {
-  return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-}
 
 enum FilePath {
   // 存储登录账号密码地址
-  struct loginPath {
-    static let userInfo = "loginuserInfoFile.path"
+  struct Account {
+    static let userInfo = "UserInfoFile.path"
   }
 }
 

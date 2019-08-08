@@ -29,11 +29,18 @@
 		B4502BE922FAE40D00396491 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BE822FAE40D00396491 /* MyViewController.swift */; };
 		B4502BEB22FAE44900396491 /* StaticTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BEA22FAE44900396491 /* StaticTableViewCell.swift */; };
 		B4502BED22FAE47F00396491 /* MyNormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BEC22FAE47F00396491 /* MyNormalTableViewCell.swift */; };
+		B4502BEF22FBB8F900396491 /* MyHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BEE22FBB8F900396491 /* MyHeaderTableViewCell.swift */; };
+		B4502BF122FBBB1700396491 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BF022FBBB1700396491 /* UserInfo.swift */; };
+		B4502BF322FBBDB800396491 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BF222FBBDB800396491 /* Const.swift */; };
+		B4502BF622FBCB0A00396491 /* UpdateUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BF522FBCB0A00396491 /* UpdateUserInfoViewController.swift */; };
+		B4502BF822FBEF7200396491 /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BF722FBEF7200396491 /* UserInfoManager.swift */; };
+		B4502BFA22FBF41100396491 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BF922FBF41100396491 /* FeedbackViewController.swift */; };
+		B4502BFC22FBF82600396491 /* MySettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BFB22FBF82600396491 /* MySettingViewController.swift */; };
+		B4502BFE22FBFA2200396491 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4502BFD22FBFA2200396491 /* AboutAppViewController.swift */; };
 		B45A4CDC22EEC6A400BBC94D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */; };
 		B45A4CE122EEC6A400BBC94D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CDF22EEC6A400BBC94D /* Main.storyboard */; };
 		B45A4CE322EEC6A600BBC94D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CE222EEC6A600BBC94D /* Assets.xcassets */; };
 		B45A4CE622EEC6A600BBC94D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B45A4CE422EEC6A600BBC94D /* LaunchScreen.storyboard */; };
-		B45A4CF922EED08000BBC94D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CEF22EED06E00BBC94D /* Common.swift */; };
 		B45A4CFA22EED08000BBC94D /* NetURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF122EED08000BBC94D /* NetURL.swift */; };
 		B45A4CFB22EED08000BBC94D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF222EED08000BBC94D /* Color.swift */; };
 		B45A4CFC22EED08000BBC94D /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4CF322EED08000BBC94D /* App.swift */; };
@@ -91,6 +98,14 @@
 		B4502BE822FAE40D00396491 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		B4502BEA22FAE44900396491 /* StaticTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticTableViewCell.swift; sourceTree = "<group>"; };
 		B4502BEC22FAE47F00396491 /* MyNormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNormalTableViewCell.swift; sourceTree = "<group>"; };
+		B4502BEE22FBB8F900396491 /* MyHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		B4502BF022FBBB1700396491 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		B4502BF222FBBDB800396491 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		B4502BF522FBCB0A00396491 /* UpdateUserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateUserInfoViewController.swift; sourceTree = "<group>"; };
+		B4502BF722FBEF7200396491 /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
+		B4502BF922FBF41100396491 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		B4502BFB22FBF82600396491 /* MySettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySettingViewController.swift; sourceTree = "<group>"; };
+		B4502BFD22FBFA2200396491 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tinder-Bridging-Header.h"; sourceTree = "<group>"; };
 		B45A4CD822EEC6A400BBC94D /* Tinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,7 +113,6 @@
 		B45A4CE222EEC6A600BBC94D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B45A4CE522EEC6A600BBC94D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B45A4CE722EEC6A600BBC94D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B45A4CEF22EED06E00BBC94D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		B45A4CF122EED08000BBC94D /* NetURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetURL.swift; sourceTree = "<group>"; };
 		B45A4CF222EED08000BBC94D /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		B45A4CF322EED08000BBC94D /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -153,6 +167,7 @@
 			children = (
 				B411686D22F12DFC002008BE /* WebResult.swift */,
 				B411687722F192D4002008BE /* FileInfo.swift */,
+				B4502BF022FBBB1700396491 /* UserInfo.swift */,
 			);
 			path = Infos;
 			sourceTree = "<group>";
@@ -173,10 +188,24 @@
 			isa = PBXGroup;
 			children = (
 				B4502BE822FAE40D00396491 /* MyViewController.swift */,
+				B4502BF522FBCB0A00396491 /* UpdateUserInfoViewController.swift */,
+				B4502BF922FBF41100396491 /* FeedbackViewController.swift */,
+				B4502BFB22FBF82600396491 /* MySettingViewController.swift */,
+				B4502BFD22FBFA2200396491 /* AboutAppViewController.swift */,
 				B4502BEA22FAE44900396491 /* StaticTableViewCell.swift */,
+				B4502BEE22FBB8F900396491 /* MyHeaderTableViewCell.swift */,
 				B4502BEC22FAE47F00396491 /* MyNormalTableViewCell.swift */,
 			);
 			path = My;
+			sourceTree = "<group>";
+		};
+		B4502BF422FBBDFA00396491 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				B4502BF222FBBDB800396491 /* Const.swift */,
+				B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */,
+			);
+			path = Macro;
 			sourceTree = "<group>";
 		};
 		B45A4CCF22EEC6A400BBC94D = {
@@ -202,6 +231,7 @@
 			children = (
 				B427F81F22F402C3006FEAD9 /* Tinder.entitlements */,
 				B45A4CDB22EEC6A400BBC94D /* AppDelegate.swift */,
+				B4502BF422FBBDFA00396491 /* Macro */,
 				B411686C22F12D0E002008BE /* Infos */,
 				B45A4CF022EED08000BBC94D /* Configs */,
 				B45A4CED22EED06E00BBC94D /* Utilites */,
@@ -228,7 +258,6 @@
 		B45A4CF022EED08000BBC94D /* Configs */ = {
 			isa = PBXGroup;
 			children = (
-				B45A4CEF22EED06E00BBC94D /* Common.swift */,
 				B45A4CF122EED08000BBC94D /* NetURL.swift */,
 				B45A4CF222EED08000BBC94D /* Color.swift */,
 				B45A4CF322EED08000BBC94D /* App.swift */,
@@ -305,7 +334,7 @@
 				B411686822F03B4A002008BE /* WebManager.swift */,
 				B4F5449122F2EAC600E07016 /* FileServer.swift */,
 				B4F5449322F2F04700E07016 /* VCManager.swift */,
-				B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */,
+				B4502BF722FBEF7200396491 /* UserInfoManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -454,14 +483,17 @@
 				B45A4D0722EED19900BBC94D /* TabBarController.swift in Sources */,
 				B411687822F192D4002008BE /* FileInfo.swift in Sources */,
 				B45A4D0622EED19900BBC94D /* NavigationController.swift in Sources */,
+				B4502BFE22FBFA2200396491 /* AboutAppViewController.swift in Sources */,
 				B45A4D1C22EED1CB00BBC94D /* Color+Extensions.swift in Sources */,
 				B4F5449422F2F04700E07016 /* VCManager.swift in Sources */,
 				B45A4CFF22EED08000BBC94D /* HUD.swift in Sources */,
+				B4502BF122FBBB1700396491 /* UserInfo.swift in Sources */,
 				B43911DF22F957440010BED5 /* VideoPlayerCell.swift in Sources */,
-				B45A4CF922EED08000BBC94D /* Common.swift in Sources */,
 				B45A4D2722EEED6C00BBC94D /* FileInfoCell.swift in Sources */,
+				B4502BFC22FBF82600396491 /* MySettingViewController.swift in Sources */,
 				B411687022F1653A002008BE /* FilePickerViewController.swift in Sources */,
 				B4502BEB22FAE44900396491 /* StaticTableViewCell.swift in Sources */,
+				B4502BFA22FBF41100396491 /* FeedbackViewController.swift in Sources */,
 				B4F5449222F2EAC600E07016 /* FileServer.swift in Sources */,
 				B45A4D2522EEEAEE00BBC94D /* UploaderViewController.swift in Sources */,
 				B411687422F18DB2002008BE /* UISearchBar+Extensions.swift in Sources */,
@@ -473,7 +505,9 @@
 				B45A4CFC22EED08000BBC94D /* App.swift in Sources */,
 				B45A4CFE22EED08000BBC94D /* WebClient.swift in Sources */,
 				B43911DA22F94AB20010BED5 /* PWVideoPalyerView.swift in Sources */,
+				B4502BEF22FBB8F900396491 /* MyHeaderTableViewCell.swift in Sources */,
 				B4502BE922FAE40D00396491 /* MyViewController.swift in Sources */,
+				B4502BF822FBEF7200396491 /* UserInfoManager.swift in Sources */,
 				B411686922F03B4A002008BE /* WebManager.swift in Sources */,
 				B411686E22F12DFC002008BE /* WebResult.swift in Sources */,
 				B45A4D1622EED1CB00BBC94D /* UIButton+Extensions.swift in Sources */,
@@ -481,6 +515,7 @@
 				B43911D422F92BFC0010BED5 /* NSData+Extensions.m in Sources */,
 				B43911DC22F94AB20010BED5 /* VideoPalyerViewController.swift in Sources */,
 				B411686B22F04F13002008BE /* MatchingViewController.swift in Sources */,
+				B4502BF322FBBDB800396491 /* Const.swift in Sources */,
 				B45A4D1822EED1CB00BBC94D /* String+Extensions.swift in Sources */,
 				B45A4CDC22EEC6A400BBC94D /* AppDelegate.swift in Sources */,
 				B45A4D1922EED1CB00BBC94D /* UITableView+Extensions.swift in Sources */,
@@ -499,6 +534,7 @@
 				B411687622F18F66002008BE /* FileTypesView.swift in Sources */,
 				B45A4CFD22EED08000BBC94D /* Refresh.swift in Sources */,
 				B43911B722F838ED0010BED5 /* Notification.swift in Sources */,
+				B4502BF622FBCB0A00396491 /* UpdateUserInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,13 +687,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HM6LBBLTGF;
 				INFOPLIST_FILE = Tinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Deng.Tinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tinder/Manager/Tinder-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tinder/Macro/Tinder-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -675,13 +712,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HM6LBBLTGF;
 				INFOPLIST_FILE = Tinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Deng.Tinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Tinder/Manager/Tinder-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tinder/Macro/Tinder-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

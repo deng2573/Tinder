@@ -7,10 +7,6 @@
 //
 
 import UIKit
-import TZImagePickerController
-import MMLanScan
-import Tiercel
-import UICircularProgressRing
 
 class HomeViewController: ViewController {
 
@@ -60,27 +56,12 @@ class HomeViewController: ViewController {
     return label
   }()
   
-  private lazy var progressRing: UICircularProgressRing = {
-    let progressRing = UICircularProgressRing(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-    
-    progressRing.maxValue = 1
-    progressRing.minValue = 0
-    progressRing.outerRingWidth = 6
-    progressRing.outerRingColor = UIColor.themeColor
-    progressRing.innerRingWidth = 3
-    progressRing.innerRingColor = #colorLiteral(red: 0.2862745098, green: 0.2784313725, blue: 0.3215686275, alpha: 1)
-    
-    progressRing.innerRingSpacing = 0
-    progressRing.innerCapStyle = .butt
-    progressRing.fontColor = .blue
-    progressRing.font = UIFont.boldSystemFont(ofSize: 16)
-
-    return progressRing
-  }()
+  private let netManager = NetworkReachabilityManager()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpView()
+    networkMonitoring()
   }
   
   private func setUpView() {
@@ -133,11 +114,12 @@ class HomeViewController: ViewController {
   }
   
   private func pushQRCodeGeneratorController() {
-    let localIP = WebManager.localDevice?.ipAddress
-    guard let ip = localIP else {
+    
+    guard let serverUrl = WebServer.shared.uploader.serverURL else {
+      HUD.show(text: "当前不再局域网环境中, 请连接WiFi, 稍后重试")
       return
     }
-    let url = #"http://\#(ip):\#(WebServer.shared.uploader.port)/upload"#
+    let url = serverUrl.absoluteString + "upload"
     let vc = QRCodeGeneratorViewController(content: url)
     navigationController?.pushViewController(vc, animated: true)
   }
@@ -145,6 +127,22 @@ class HomeViewController: ViewController {
   private func pushTransferViewController() {
     let vc = LocalFileViewController()
     navigationController?.pushViewController(vc, animated: true)
+  }
+  
+  private func networkMonitoring() {
+    netManager?.listener = { status in
+      switch status {
+      case .reachable(let type):
+        if type == .ethernetOrWiFi {
+          HUD.show(text: "服务已开启")
+        } else {
+          HUD.show(text: "当前不再局域网环境中, 请连接WiFi启动服务")
+        }
+      default:
+        break
+      }
+    }
+    netManager?.startListening()
   }
   
   private func upload() {

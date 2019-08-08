@@ -13,7 +13,6 @@ import iCloudDocumentSync
 import FileKit
 
 class FileServer: NSObject {
-  static let shared = FileServer()
   
   var didSelectedAction: (([FileInfo]) -> Void)?
   

@@ -10,21 +10,31 @@ import UIKit
 
 class MyNormalTableViewCell: UITableViewCell {
   
+  private lazy var contentBackgroundView: UIView = {
+    let view = UIView(frame: .zero)
+    view.backgroundColor = .white
+    view.layer.shadowColor = UIColor.lightGray.cgColor
+    view.layer.borderColor = view.layer.shadowColor
+    view.layer.borderWidth = 0.01
+    view.layer.cornerRadius = 5
+    view.layer.shadowOpacity = 0.2
+    view.layer.shadowRadius = 5
+    view.layer.shadowOffset = .zero
+    return view
+  }()
+  
   private lazy var titleLable: UILabel = {
     let label = UILabel()
     label.numberOfLines = 0
     label.text = ""
-    label.textColor = #colorLiteral(red: 0.6392156863, green: 0.6196078431, blue: 0.6823529412, alpha: 1)
-    label.font = UIFont.systemFont(ofSize: 16)
+    label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    label.font = UIFont.boldSystemFont(ofSize: 15)
     return label
   }()
   
-  private lazy var valueLable: UILabel = {
-    let label = UILabel()
-    label.text = ""
-    label.textColor = #colorLiteral(red: 0.6392156863, green: 0.6196078431, blue: 0.6823529412, alpha: 1)
-    label.font = UIFont.systemFont(ofSize: 15)
-    return label
+  private lazy var iconImageView: UIImageView = {
+    let imageView = UIImageView()
+    return imageView
   }()
   
   private lazy var arrowImageView: UIImageView = {
@@ -51,24 +61,24 @@ class MyNormalTableViewCell: UITableViewCell {
   
   func setupView() {
     backgroundColor = UIColor.themeBackgroundColor
+    
+    contentView.addSubview(contentBackgroundView)
+    contentBackgroundView.snp.makeConstraints({ (make) in
+      make.edges.equalTo(UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8))
+    })
+    
     contentView.addSubview(titleLable)
     titleLable.snp.makeConstraints({ (make) in
       make.top.equalToSuperview().offset(20)
-      make.left.equalToSuperview().offset(30)
+      make.left.equalToSuperview().offset(25)
       make.bottom.equalToSuperview().offset(-20)
     })
     
     contentView.addSubview(arrowImageView)
     arrowImageView.snp.makeConstraints({ (make) in
       make.centerY.equalTo(titleLable)
-      make.right.equalToSuperview().offset(-10)
+      make.right.equalToSuperview().offset(-20)
       make.size.equalTo(CGSize(width: 20, height: 20))
-    })
-    
-    contentView.addSubview(valueLable)
-    valueLable.snp.makeConstraints({ (make) in
-      make.centerY.equalTo(titleLable)
-      make.right.equalTo(arrowImageView.snp.left).offset(-22)
     })
     
     contentView.addSubview(lineView)
@@ -79,13 +89,7 @@ class MyNormalTableViewCell: UITableViewCell {
     })
   }
   
-  func update(title: String, value: String = "") {
+  func update(title: String) {
     titleLable.text = title
-    valueLable.text = value
-    if value == "未绑定" {
-      valueLable.textColor = #colorLiteral(red: 1, green: 0.7450980392, blue: 0, alpha: 1)
-    } else {
-      valueLable.textColor = #colorLiteral(red: 0.6392156863, green: 0.6196078431, blue: 0.6823529412, alpha: 1)
-    }
   }
 }

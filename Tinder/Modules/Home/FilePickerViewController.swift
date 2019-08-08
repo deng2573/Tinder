@@ -58,6 +58,8 @@ class FilePickerViewController: ViewController {
     return button
   }()
   
+  private var fileServer = FileServer()
+  
   private var files: [FileInfo] = []
   
   override func viewDidLoad() {
@@ -82,6 +84,11 @@ class FilePickerViewController: ViewController {
   private func pushQRCodeGeneratorViewController() {
     if self.files.isEmpty {
       HUD.show(text: "请选择文件")
+      return
+    }
+    
+    if !WebServer.shared.uploader.isRunning || WebServer.shared.uploader.serverURL == nil {
+      HUD.show(text: "当前不再局域网环境中, 请连接WiFi, 稍后重试")
       return
     }
     
@@ -112,9 +119,8 @@ extension FilePickerViewController: UITableViewDataSource {
     if indexPath.section == 0 {
       let cell = tableView.dequeueReusableCell(for: indexPath, cellType: FileTypesCell.self)
       cell.fileTypeView.didSelectedAction = { type in
-        let fileServer = FileServer.shared
-        fileServer.filePicker(type: type)
-        fileServer.didSelectedAction = { files in
+        self.fileServer.filePicker(type: type)
+        self.fileServer.didSelectedAction = { files in
           self.files = files
           self.shareButton.setTitle("分享  \(files.count)", for: .normal)
           self.tableView.reloadData()
@@ -174,8 +180,7 @@ extension FilePickerViewController: SwipeTableViewCellDelegate {
     if orientation == .right {
       let delete = SwipeAction(style: .destructive, title: nil) { action, indexPath in
         self.files.remove(at: indexPath.row)
-        let fileServer = FileServer.shared
-        fileServer.removeFile(info: file)
+        self.fileServer.removeFile(info: file)
       }
       delete.image = #imageLiteral(resourceName:"Trash")
       delete.backgroundColor = UIColor.themeBackgroundColor

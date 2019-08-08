@@ -20,4 +20,13 @@ struct AppConfig {
     return status
   }
 
+  static var version: String {
+    return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+  }
+}
+
+extension UIFont {
+  static func themeFont(size: CGFloat) -> UIFont {
+    return UIFont(name: "HelveticaNeue-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
+  }
 }

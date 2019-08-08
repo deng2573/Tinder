@@ -11,14 +11,14 @@ import UIKit
 class StaticTableViewCell {
   
   var cellType: UITableViewCell.Type = UITableViewCell.self
-  var title = ""
-  var value = ""
-  var didSelectPushTo: ViewController?
+  var title: String
+  var icon: UIImage
+  var didSelectPushTo: ViewController
   
-  init(cellType: UITableViewCell.Type, title: String = "", value: String = "", didSelectPushTo: ViewController? = nil) {
+  init(cellType: UITableViewCell.Type, title: String = "", icon: UIImage = UIImage(), didSelectPushTo: ViewController) {
     self.cellType = cellType
     self.title = title
-    self.value = value
+    self.icon = icon
     self.didSelectPushTo = didSelectPushTo
   }
 
