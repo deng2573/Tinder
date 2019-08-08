@@ -66,31 +66,31 @@ class HomeViewController: ViewController {
   
   private func setUpView() {
     title = "首页"
+    view.addSubview(shareLabel)
+    shareLabel.snp.makeConstraints({ (make) in
+      make.centerX.equalToSuperview()
+      make.bottom.equalTo(view.snp.centerY).offset(-60)
+      make.size.equalTo(CGSize(width: 100, height: 25))
+    })
+    
     view.addSubview(shareButton)
     shareButton.snp.makeConstraints({ (make) in
       make.centerX.equalToSuperview()
-      make.bottom.equalTo(view.snp.centerY).offset(-60)
+      make.bottom.equalTo(shareLabel.snp.top).offset(-15)
       make.size.equalTo(CGSize(width: screenWidth * 0.4, height: screenWidth * 0.4))
     })
     
     view.addSubview(receiveButton)
     receiveButton.snp.makeConstraints({ (make) in
-      make.centerX.equalTo(shareButton)
-      make.top.equalTo(view.snp.centerY).offset(10)
+      make.centerX.equalToSuperview()
+      make.top.equalTo(view.snp.centerY)
       make.size.equalTo(shareButton)
-    })
-    
-    view.addSubview(shareLabel)
-    shareLabel.snp.makeConstraints({ (make) in
-      make.centerX.equalTo(shareButton)
-      make.top.equalTo(shareButton.snp.bottom).offset(10)
-      make.size.equalTo(CGSize(width: 100, height: 25))
     })
     
     view.addSubview(receiveLabel)
     receiveLabel.snp.makeConstraints({ (make) in
-      make.centerX.equalTo(shareButton)
-      make.top.equalTo(receiveButton.snp.bottom).offset(10)
+      make.centerX.equalToSuperview()
+      make.top.equalTo(receiveButton.snp.bottom).offset(15)
       make.size.equalTo(shareLabel)
     })
     
@@ -134,7 +134,6 @@ class HomeViewController: ViewController {
       switch status {
       case .reachable(let type):
         if type == .ethernetOrWiFi {
-          HUD.show(text: "服务已开启")
         } else {
           HUD.show(text: "当前不再局域网环境中, 请连接WiFi启动服务")
         }
