@@ -19,13 +19,17 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>我们希望打开相机来完成用户信息，请允许使用相机</string>
+	<key>NSLocationUsageDescription</key>
+	<string>允许定位以把位置保存到照片中</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>允许定位以把位置保存到照片中</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>若不允许，您将无法将照片保存到相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
@@ -34,6 +38,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
