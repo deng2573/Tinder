@@ -60,11 +60,11 @@ class HomeViewController: ViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setUpView()
+    setupHomeView()
     networkMonitoring()
   }
   
-  private func setUpView() {
+  private func setupHomeView() {
     title = "首页"
     view.addSubview(shareLabel)
     shareLabel.snp.makeConstraints({ (make) in
@@ -96,12 +96,12 @@ class HomeViewController: ViewController {
     
     let localFileButton = UIButton(type: .custom)
     localFileButton.frame = CGRect(x: 0, y: 0, width: 50, height: 60)
-    localFileButton.setTitle("传输列表", for: .normal)
+    localFileButton.setTitle("电脑上传", for: .normal)
     localFileButton.setTitleColor(.darkGray, for: .normal)
     localFileButton.layer.cornerRadius = 22
     localFileButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
     localFileButton.tap(action: { _ in
-      self.pushTransferViewController()
+      self.pushPCAddressViewController()
     })
     
     let item = UIBarButtonItem(customView: localFileButton)
@@ -124,8 +124,8 @@ class HomeViewController: ViewController {
     navigationController?.pushViewController(vc, animated: true)
   }
   
-  private func pushTransferViewController() {
-    let vc = LocalFileViewController()
+  private func pushPCAddressViewController() {
+    let vc = PCAddressViewController()
     navigationController?.pushViewController(vc, animated: true)
   }
   
@@ -142,9 +142,5 @@ class HomeViewController: ViewController {
       }
     }
     netManager?.startListening()
-  }
-  
-  private func upload() {
-    WebClient.upload(path: URL(fileURLWithPath: "/var/mobile/Containers/Data/Application/F33284FD-52BB-436D-B153-49FE27CA9560/Documents/WebUpload/1.png"), url: "http://192.168.1.143:80/uploadFiles")
   }
 }

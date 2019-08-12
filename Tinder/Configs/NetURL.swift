@@ -10,5 +10,5 @@ import Foundation
 
 class NetURL {
   static var site: String { return "" }
-  static var api: String { return "\(site)/api/" }
+  static var api: String { return "\(site)/api/" } 
 }

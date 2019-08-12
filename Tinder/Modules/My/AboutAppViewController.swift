@@ -20,7 +20,7 @@ class AboutAppViewController: ViewController {
   
   private lazy var nameLable: UILabel = {
     let label = UILabel()
-    label.text = "Tinder Transfer"
+    label.text = "文件互传"
     label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     label.textAlignment = .center
     label.font = UIFont.boldSystemFont(ofSize: 18)

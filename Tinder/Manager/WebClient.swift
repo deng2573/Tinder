@@ -35,47 +35,37 @@ class WebClient: NSObject {
     return NetworkReachabilityManager()?.isReachable ?? false
   }
   
-  public static func requestJson(method: HTTPMethod = .post, url: String, parameters: [String: Any]? = nil, loading: Bool = false, callback: @escaping(JSON?, String, Int?) -> Void) {
+  public static func requestJson(method: HTTPMethod = .post, url: String, parameters: [String: Any]? = nil, loading: Bool = false, callback: @escaping(JSON?) -> Void) {
     // 检测网路状态
-    if !isReachable { callback(nil, netFailureMsg, nil); return }
+    if !isReachable { callback(nil); return }
     // Loading
     if loading { HUD.loading() }
     // 请求
     manager.request(url, method: method, parameters: parameters).responseJSON { response in
       HUD.hide()
       guard let result = response.result.value else {
-        callback(nil, netErrorMsg, nil)
+        callback(nil)
         return
       }
-      // 解析数据
-      let json = JSON(result)
-      let status = json["status"].intValue
-      let msg = json["msg"].stringValue
-      let data = json["data"]
-      // 请求成功
-      if status == 200 {
-        callback(data, msg, status)
-        return
-      }
-      callback(nil, msg, status)
+      callback(JSON(result))
     }
   }
   
 
-  public static func requestObject<T: NSObject>(method: HTTPMethod = .post, url: String, parameters: [String: Any]? = nil, loading: Bool = false, callback: @escaping (T?, String, Int?) -> Void) where T: EVReflectable {
-    requestJson(method: method, url: url, parameters: parameters, loading: loading) { json, msg, status in
+  public static func requestObject<T: NSObject>(method: HTTPMethod = .post, url: String, parameters: [String: Any]? = nil, loading: Bool = false, callback: @escaping (T?) -> Void) where T: EVReflectable {
+    requestJson(method: method, url: url, parameters: parameters, loading: loading) { json in
       guard let data = json?.rawString() else {
-        return callback(nil, msg, status)
+        return callback(nil)
       }
       let object = T(json: data)
-      return callback(object, msg, status)
+      return callback(object)
     }
   }
   
-  public static func requestObjectList<T: NSObject>(method: HTTPMethod = .post, url: String, parameters: [String: Any]? = nil, loading: Bool = false, callback: @escaping ([T]?, String, Bool) -> Void) where T: EVReflectable {
-    requestJson(method: method, url: url, parameters: parameters, loading: loading) { json, msg, status in
+  public static func requestObjectList<T: NSObject>(method: HTTPMethod = .post, url: String, parameters: [String: Any]? = nil, loading: Bool = false, callback: @escaping ([T]?) -> Void) where T: EVReflectable {
+    requestJson(method: method, url: url, parameters: parameters, loading: loading) { json in
       guard let array = json?.arrayValue else {
-        return callback(nil, msg, true)
+        return callback(nil)
       }
       let objects = array.map({ json -> T in
       if let data = json.rawString() {
@@ -83,7 +73,7 @@ class WebClient: NSObject {
       }
       return T()
       })
-      return callback(objects, msg, status == 401)
+      return callback(objects)
     }
   }
   

@@ -19,6 +19,8 @@ class WebServer: NSObject {
     let uploader = GCDWebUploader(uploadDirectory: uploadPath)
     uploader.delegate = self
     uploader.allowHiddenItems = true
+    uploader.title = "文件传输"
+    uploader.footer = ""
     return uploader
   }()
 

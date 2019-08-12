@@ -41,11 +41,8 @@ class MatchingViewController: ViewController {
       for device in devices {
         if !device.isLocalDevice {
           let url = "http://" + device.ipAddress + ":80/Matching"
-          WebClient.requestJson(method: .get, url: url, parameters: nil, loading: false, callback: { json, error, status in
-            if status == 200 {
-              self.devices.append(device)
-              self.tableView.reloadData()
-            }
+          WebClient.requestJson(method: .get, url: url, parameters: nil, loading: false, callback: { json in
+            
           })
         }
       }

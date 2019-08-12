@@ -66,6 +66,11 @@
 		B45A4D2722EEED6C00BBC94D /* FileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */; };
 		B46F142522F706C400B413D6 /* QRCodeGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46F142422F706C400B413D6 /* QRCodeGeneratorViewController.swift */; };
 		B46F142D22F70AA300B413D6 /* QRCodeRecognizerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46F142C22F70AA300B413D6 /* QRCodeRecognizerViewController.swift */; };
+		B4B762352301341500E91897 /* PushServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B762342301341500E91897 /* PushServerManager.swift */; };
+		B4B762382301387B00E91897 /* VestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B762372301387B00E91897 /* VestManager.swift */; };
+		B4B7623A2301435A00E91897 /* VestWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B762392301435A00E91897 /* VestWebView.swift */; };
+		B4B7623C2301498C00E91897 /* VestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B7623B2301498C00E91897 /* VestViewController.swift */; };
+		B4B7669322FD119D004B0CEE /* PCAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B7669222FD119D004B0CEE /* PCAddressViewController.swift */; };
 		B4F5449222F2EAC600E07016 /* FileServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5449122F2EAC600E07016 /* FileServer.swift */; };
 		B4F5449422F2F04700E07016 /* VCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F5449322F2F04700E07016 /* VCManager.swift */; };
 /* End PBXBuildFile section */
@@ -138,6 +143,11 @@
 		B45A4D2622EEED6C00BBC94D /* FileInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfoCell.swift; sourceTree = "<group>"; };
 		B46F142422F706C400B413D6 /* QRCodeGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGeneratorViewController.swift; sourceTree = "<group>"; };
 		B46F142C22F70AA300B413D6 /* QRCodeRecognizerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeRecognizerViewController.swift; sourceTree = "<group>"; };
+		B4B762342301341500E91897 /* PushServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushServerManager.swift; sourceTree = "<group>"; };
+		B4B762372301387B00E91897 /* VestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestManager.swift; sourceTree = "<group>"; };
+		B4B762392301435A00E91897 /* VestWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestWebView.swift; sourceTree = "<group>"; };
+		B4B7623B2301498C00E91897 /* VestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VestViewController.swift; sourceTree = "<group>"; };
+		B4B7669222FD119D004B0CEE /* PCAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCAddressViewController.swift; sourceTree = "<group>"; };
 		B4F5449122F2EAC600E07016 /* FileServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileServer.swift; sourceTree = "<group>"; };
 		B4F5449322F2F04700E07016 /* VCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,8 +212,8 @@
 		B4502BF422FBBDFA00396491 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				B4502BF222FBBDB800396491 /* Const.swift */,
 				B450D60F22F4763700A82BF6 /* Tinder-Bridging-Header.h */,
+				B4502BF222FBBDB800396491 /* Const.swift */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -270,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				B45A4D0122EED19900BBC94D /* Base */,
+				B4B762362301369300E91897 /* Vest */,
 				B45A4D1D22EED5E100BBC94D /* Home */,
 				B4502BE722FAE40100396491 /* My */,
 				B46F142B22F70A2F00B413D6 /* QRCode */,
@@ -314,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				B45A4D1E22EED88F00BBC94D /* HomeViewController.swift */,
+				B4B7669222FD119D004B0CEE /* PCAddressViewController.swift */,
 				B45A4D2422EEEAEE00BBC94D /* UploaderViewController.swift */,
 				B427F81D22F3D0A7006FEAD9 /* LocalFileViewController.swift */,
 				B411686A22F04F13002008BE /* MatchingViewController.swift */,
@@ -335,6 +347,7 @@
 				B4F5449122F2EAC600E07016 /* FileServer.swift */,
 				B4F5449322F2F04700E07016 /* VCManager.swift */,
 				B4502BF722FBEF7200396491 /* UserInfoManager.swift */,
+				B4B762342301341500E91897 /* PushServerManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -346,6 +359,16 @@
 				B46F142C22F70AA300B413D6 /* QRCodeRecognizerViewController.swift */,
 			);
 			path = QRCode;
+			sourceTree = "<group>";
+		};
+		B4B762362301369300E91897 /* Vest */ = {
+			isa = PBXGroup;
+			children = (
+				B4B762372301387B00E91897 /* VestManager.swift */,
+				B4B762392301435A00E91897 /* VestWebView.swift */,
+				B4B7623B2301498C00E91897 /* VestViewController.swift */,
+			);
+			path = Vest;
 			sourceTree = "<group>";
 		};
 		B812865DA0EE68CCDA8C3862 /* Pods */ = {
@@ -393,6 +416,9 @@
 						CreatedOnToolsVersion = 10.3;
 						LastSwiftMigration = 1030;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -504,6 +530,7 @@
 				B4502BED22FAE47F00396491 /* MyNormalTableViewCell.swift in Sources */,
 				B45A4CFC22EED08000BBC94D /* App.swift in Sources */,
 				B45A4CFE22EED08000BBC94D /* WebClient.swift in Sources */,
+				B4B7623C2301498C00E91897 /* VestViewController.swift in Sources */,
 				B43911DA22F94AB20010BED5 /* PWVideoPalyerView.swift in Sources */,
 				B4502BEF22FBB8F900396491 /* MyHeaderTableViewCell.swift in Sources */,
 				B4502BE922FAE40D00396491 /* MyViewController.swift in Sources */,
@@ -511,6 +538,7 @@
 				B411686922F03B4A002008BE /* WebManager.swift in Sources */,
 				B411686E22F12DFC002008BE /* WebResult.swift in Sources */,
 				B45A4D1622EED1CB00BBC94D /* UIButton+Extensions.swift in Sources */,
+				B4B762382301387B00E91897 /* VestManager.swift in Sources */,
 				B45A4D1722EED1CB00BBC94D /* UIView+Extensions.swift in Sources */,
 				B43911D422F92BFC0010BED5 /* NSData+Extensions.m in Sources */,
 				B43911DC22F94AB20010BED5 /* VideoPalyerViewController.swift in Sources */,
@@ -520,10 +548,12 @@
 				B45A4CDC22EEC6A400BBC94D /* AppDelegate.swift in Sources */,
 				B45A4D1922EED1CB00BBC94D /* UITableView+Extensions.swift in Sources */,
 				B45A4D1522EED1CB00BBC94D /* UIViewController+Extensions.swift in Sources */,
+				B4B762352301341500E91897 /* PushServerManager.swift in Sources */,
 				B45A4D2322EEDC6A00BBC94D /* WebServer.swift in Sources */,
 				B43911D122F92B5C0010BED5 /* UIImageView+Extensions.m in Sources */,
 				B46F142522F706C400B413D6 /* QRCodeGeneratorViewController.swift in Sources */,
 				B43911E122F959980010BED5 /* VideoPlayerCellData.swift in Sources */,
+				B4B7669322FD119D004B0CEE /* PCAddressViewController.swift in Sources */,
 				B45A4D1A22EED1CB00BBC94D /* Dictionary+Extensions.swift in Sources */,
 				B427F81E22F3D0A7006FEAD9 /* LocalFileViewController.swift in Sources */,
 				B43911DB22F94AB20010BED5 /* PWPlayerControlView.swift in Sources */,
@@ -534,6 +564,7 @@
 				B411687622F18F66002008BE /* FileTypesView.swift in Sources */,
 				B45A4CFD22EED08000BBC94D /* Refresh.swift in Sources */,
 				B43911B722F838ED0010BED5 /* Notification.swift in Sources */,
+				B4B7623A2301435A00E91897 /* VestWebView.swift in Sources */,
 				B4502BF622FBCB0A00396491 /* UpdateUserInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

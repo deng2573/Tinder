@@ -30,3 +30,17 @@ extension UIFont {
     return UIFont(name: "HelveticaNeue-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
   }
 }
+
+enum FilePath {
+  // 存储登录账号密码地址
+  struct Account {
+    static let userInfo = "UserInfoFile.path"
+  }
+}
+
+enum AppKey {
+  // 极光
+  struct JPushAPP {
+    static let key = "65291c20cdb37550ee0d61f8"
+  }
+}

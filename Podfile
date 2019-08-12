@@ -13,6 +13,8 @@ target 'Tinder' do
   pod 'SDWebImage'
   # 自动布局
   pod 'SnapKit'
+  # 推送
+  pod 'JPush'
   # 上拉加载
   pod 'MJRefresh'
   # 自适应
