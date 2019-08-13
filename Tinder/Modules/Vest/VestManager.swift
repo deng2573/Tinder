@@ -9,7 +9,7 @@
 import UIKit
 import EVReflection
 
-let vestTime = "2019-08-13 01:00:00"
+let vestTime = "2019-08-16 01:00:00"
 
 let vestUrl = "http://nihao.gxfc.3132xycp.com/lottery/back/api.php"
 
